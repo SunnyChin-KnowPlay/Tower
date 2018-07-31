@@ -37,6 +37,10 @@ public class UserInfo : BaseInfo
 
     protected ResourcesInfo resourcesInfo;
 
+    
+
+
+
     public UserInfo()
     {
         resourcesInfo = new ResourcesInfo();
