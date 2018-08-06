@@ -61,7 +61,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Home\HomeManager.cs" />
+    <Compile Include="Assets\Scripts\Models\Base\BaseInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Base\BaseModel.cs" />
+    <Compile Include="Assets\Scripts\Models\Base\IModel.cs" />
+    <Compile Include="Assets\Scripts\Models\BuildModel.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\BuildInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\HomeInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\HouseInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\ResourcesInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\TowerInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\UserInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\ModelManager.cs" />
+    <Compile Include="Assets\Scripts\Models\UserModel.cs" />
+    <Compile Include="Assets\Scripts\Network\Agent.cs" />
+    <Compile Include="Assets\Scripts\Network\Protocols\Src\Common\AckConnect.cs" />
+    <Compile Include="Assets\Scripts\Network\Protocols\Src\Common\LoginReq.cs" />
+    <Compile Include="Assets\Scripts\Network\Protocols\Src\Common\LoginRes.cs" />
+    <Compile Include="Assets\Scripts\Network\Protocols\Src\Common\ReqConnect.cs" />
+    <Compile Include="Assets\Scripts\Network\Protocols\Src\Common\UserInfo.cs" />
+    <Compile Include="Assets\Scripts\Network\Protocols\Src\ProtocolManager.cs" />
+    <Compile Include="Assets\Scripts\Startup\StartupManager.cs" />
+    <Compile Include="Assets\Scripts\Tables\Src\SpritesModel.cs" />
+    <Compile Include="Assets\Scripts\Tables\Src\TableManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Bases\IUIPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Bases\UIPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\UICoverTouchPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\UIResourceNode.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\UISystemButton.cs" />
+    <Compile Include="Assets\Scripts\UI\Defineds\UIDefined.cs" />
+    <Compile Include="Assets\Scripts\UI\Home\UIDiamondPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Home\UIHomePanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Home\UIHousePanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Home\UISpritePanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Home\UITaskPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Home\UITowerPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Management\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\UIMain.cs" />
     <Compile Include="Assets\Scripts\UI\UIStartup.cs" />
+    <None Include="Assets\FantasyIconsMegaPack\ReadMe.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/sunny/Projects/Tower/Tower/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -263,6 +301,18 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="DreamEngine.Net">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Security">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Table">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Table.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Utilities">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/sunny/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
@@ -271,18 +321,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/sunny/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Utilities">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Table">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Table.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Security">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Net">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Net.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

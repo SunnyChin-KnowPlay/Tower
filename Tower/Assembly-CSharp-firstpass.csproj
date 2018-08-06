@@ -69,6 +69,7 @@
     <Compile Include="Assets\Plugins\Dream\AssetManager\AssetManager.cs" />
     <Compile Include="Assets\Plugins\Dream\AssetManager\AssetUpdater.cs" />
     <Compile Include="Assets\Plugins\Dream\Extension\Unity\EComponent.cs" />
+    <Compile Include="Assets\Plugins\Dream\Extension\Unity\ERectTransform.cs" />
     <Compile Include="Assets\Plugins\Dream\Extension\Unity\ETransform.cs" />
     <Compile Include="Assets\Plugins\Dream\FSM\Blackboard.cs" />
     <Compile Include="Assets\Plugins\Dream\FSM\Condition.cs" />
@@ -282,6 +283,18 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="DreamEngine.Net">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Security">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Table">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Table.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Utilities">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Utilities.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/sunny/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
@@ -290,18 +303,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/sunny/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Utilities">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Table">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Table.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Security">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Net">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Net.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

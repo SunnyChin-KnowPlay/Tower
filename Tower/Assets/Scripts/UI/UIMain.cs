@@ -3,8 +3,10 @@ using Dream.Extension.Unity;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIMain : MonoBehaviour
+public class UIMain : UIPanel
 {
+    public const string Key = "UI/Prefabs/Home/MainPanel";
+
     /// <summary>
     /// 用户名字
     /// </summary>
@@ -20,8 +22,10 @@ public class UIMain : MonoBehaviour
     /// </summary>
     private GridLayoutGroup systemButtonGrid;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         userNameText = this.transform.Find("UserNameText").GetComponent<Text>();
         resourcesGrid = this.transform.Find("ResourcesGrid").GetComponent<GridLayoutGroup>();
         systemButtonGrid = this.transform.Find("SystemButtonGrid").GetComponent<GridLayoutGroup>();
@@ -36,9 +40,12 @@ public class UIMain : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
+        base.Start();
 
+        int v = transform.GetSiblingIndex();
+        int d = 1;
 
     }
 
@@ -134,6 +141,45 @@ public class UIMain : MonoBehaviour
             systemButtonGrid.transform.AddChild(systemButton.transform);
         }
 
+        go = GameObject.Instantiate(obj) as GameObject;
+        systemButton = go.GetComponentOrAdd<UISystemButton>();
+        if (null != systemButton)
+        {
+            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/03");
+            systemButton.Setup(iconSprite, "塔");
+            systemButton.IconButton.onClick.AddListener(OnClickTower);
+            systemButtonGrid.transform.AddChild(systemButton.transform);
+        }
+
+        go = GameObject.Instantiate(obj) as GameObject;
+        systemButton = go.GetComponentOrAdd<UISystemButton>();
+        if (null != systemButton)
+        {
+            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/04");
+            systemButton.Setup(iconSprite, "房子");
+            systemButton.IconButton.onClick.AddListener(OnClickHouse);
+            systemButtonGrid.transform.AddChild(systemButton.transform);
+        }
+
+        go = GameObject.Instantiate(obj) as GameObject;
+        systemButton = go.GetComponentOrAdd<UISystemButton>();
+        if (null != systemButton)
+        {
+            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/05");
+            systemButton.Setup(iconSprite, "精灵面板");
+            systemButton.IconButton.onClick.AddListener(OnClickSprite);
+            systemButtonGrid.transform.AddChild(systemButton.transform);
+        }
+
+        go = GameObject.Instantiate(obj) as GameObject;
+        systemButton = go.GetComponentOrAdd<UISystemButton>();
+        if (null != systemButton)
+        {
+            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/06");
+            systemButton.Setup(iconSprite, "水晶面板");
+            systemButton.IconButton.onClick.AddListener(OnClickCrystal);
+            systemButtonGrid.transform.AddChild(systemButton.transform);
+        }
 
     }
     #endregion
@@ -144,6 +190,11 @@ public class UIMain : MonoBehaviour
     /// </summary>
     private void OnClickTask()
     {
+        var taskPanel = uiManager.LoadPanel<UITaskPanel>(UITaskPanel.Key);
+        if (null != taskPanel)
+        {
+            uiManager.Push(taskPanel);
+        }
         UnityEngine.Debug.Log("OnClickTask");
     }
 
@@ -152,6 +203,11 @@ public class UIMain : MonoBehaviour
     /// </summary>
     private void OnClickHome()
     {
+        var homePanel = uiManager.LoadPanel<UIHomePanel>(UIHomePanel.Key);
+        if (null != homePanel)
+        {
+            uiManager.Push(homePanel);
+        }
         UnityEngine.Debug.Log("OnClickHome");
     }
 
@@ -160,7 +216,7 @@ public class UIMain : MonoBehaviour
     /// </summary>
     private void OnClickTower()
     {
-
+        UnityEngine.Debug.Log("OnClickTower");
     }
 
     /// <summary>
@@ -168,7 +224,19 @@ public class UIMain : MonoBehaviour
     /// </summary>
     private void OnClickHouse()
     {
+        UnityEngine.Debug.Log("OnClickHouse");
+    }
 
+
+    private void OnClickSprite()
+    {
+        UnityEngine.Debug.Log("OnClickSprite");
+    }
+
+
+    private void OnClickCrystal()
+    {
+        UnityEngine.Debug.Log("OnClickCrystal");
     }
     #endregion
 }

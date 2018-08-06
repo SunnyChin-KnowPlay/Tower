@@ -323,6 +323,33 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Editor/Zip/ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Net">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Security">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Table">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Table.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Utilities">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEditor.Net">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/Editor/DreamEditor.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEditor.Table">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/Editor/DreamEditor.Table.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEditor.Utilities">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/Editor/DreamEditor.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Excel">
+      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/Editor/Excel.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/sunny/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -343,33 +370,6 @@
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEditor.Net">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/Editor/DreamEditor.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="Excel">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/Editor/Excel.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEditor.Utilities">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/Editor/DreamEditor.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEditor.Table">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/Editor/DreamEditor.Table.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Utilities">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Table">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Table.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Security">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Editor/Zip/ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="DreamEngine.Net">
-      <HintPath>C:/Users/sunny/Projects/Tower/Tower/Assets/Plugins/Dream/Engine/DreamEngine.Net.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>

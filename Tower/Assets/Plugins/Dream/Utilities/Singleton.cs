@@ -5,7 +5,6 @@ namespace Dream.Utilities
     public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
         protected static T s_Instance;
-        protected bool isDontDestroy = false;
 
         public static T Instance
         {
@@ -19,12 +18,15 @@ namespace Dream.Utilities
                     {
                         var go = new GameObject("Singleton of " + typeof(T).ToString());
                         s_Instance = go.AddComponent<T>();
-                        s_Instance.isDontDestroy = true;
-                        DontDestroyOnLoad(s_Instance.gameObject);
                     }
                     else
                     {
                         s_Instance = obj.GetComponent<T>();
+                    }
+
+                    if (null != s_Instance)
+                    {
+                        DontDestroyOnLoad(s_Instance.gameObject);
                     }
                 }
                 return s_Instance;
@@ -41,12 +43,15 @@ namespace Dream.Utilities
                 {
                     var go = new GameObject("Singleton of " + typeof(T).ToString());
                     s_Instance = go.AddComponent<T>();
-                    s_Instance.isDontDestroy = true;
-                    DontDestroyOnLoad(s_Instance.gameObject);
                 }
                 else
                 {
                     s_Instance = obj.GetComponent<T>();
+                }
+
+                if (null != s_Instance)
+                {
+                    DontDestroyOnLoad(s_Instance.gameObject);
                 }
             }
             return s_Instance;
@@ -54,8 +59,7 @@ namespace Dream.Utilities
 
         protected virtual void OnDestroy()
         {
-            if (s_Instance && !s_Instance.isDontDestroy)
-                s_Instance = null;
+
         }
 
         public virtual void DestroySingleton()

@@ -6,10 +6,13 @@ namespace Dream.Extension.Unity
     {
         public static Transform AddChild(this Transform t, Transform child)
         {
+            if (null == child)
+                return null;
+
             if (child.parent == t)
                 return child;
 
-            child.parent = t;
+            child.SetParent(t, false);
             return child;
         }
 
@@ -19,6 +22,7 @@ namespace Dream.Extension.Unity
                 return child;
 
             child.parent = null;
+
             return child;
         }
     }
