@@ -1,0 +1,36 @@
+namespace Common
+{
+	Info UserInfo
+	{
+		Guid uuid;		-- 唯一ID
+		string name;	-- 用户名
+	}
+
+	Protocol ReqConnect : 0x0001
+	{
+
+	}
+
+	Protocol AckConnect : 0x0002
+	{
+
+	}
+
+	Protocol LoginReq : 0x0003
+	{
+		string account;
+		string password;
+		string c1;
+		string c2;
+		string c3;
+		string c4;
+		string c5;
+		string c6;
+		string c7;
+	}
+
+	Protocol LoginRes : 0x0004
+	{
+		string account;
+	}
+}
