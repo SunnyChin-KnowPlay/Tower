@@ -13,7 +13,7 @@ public class HomeManager : MonoBehaviour
         mainPanel = uiManager.LoadPanel<UIMain>(UIMain.Key);
         if (null != mainPanel)
         {
-            uiManager.Push(mainPanel);
+            uiManager.Add(mainPanel);
         }
     }
 

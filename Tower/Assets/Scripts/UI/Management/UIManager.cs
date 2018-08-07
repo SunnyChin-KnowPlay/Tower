@@ -325,46 +325,65 @@ public class UIManager : Singleton<UIManager>
             }
         }
 
+        if (null != currentPanel && currentPanel.gameObject.activeSelf)
+        {
+            if (transition.IsAnimation)
+            {
+                yield return currentPanel.OnHide();
+            }
+            currentPanel.gameObject.SetActive(false);
+            if (null != UIChangedExit)
+            {
+                UIChangedExit.Invoke(currentPanel, transition.Type);
+            }
+        }
 
-        if (null != currentPanel && (transition.Type == TransitionTypeEnum.Pop || transition.Type == TransitionTypeEnum.Replace))
+        if (transition.Type == TransitionTypeEnum.Pop)
+        {
+            currentPanel = null;
+            if (uiStack.Count > 0)
+            {
+                uiStack.Pop();
+                if (uiStack.Count > 0)
+                    currentPanel = uiStack.Peek();
+            }
+        }
+        else if (transition.Type == TransitionTypeEnum.Replace)
         {
             if (uiStack.Count > 0)
             {
                 uiStack.Pop();
             }
+            currentPanel = transition.Next;
+            if (null != currentPanel)
+                currentPanel.LastTransitionType = TransitionTypeEnum.Replace;
+        }
+        else
+        {
+            currentPanel = transition.Next;
+            if (null != currentPanel)
+                currentPanel.LastTransitionType = TransitionTypeEnum.Push;
+            uiStack.Push(currentPanel);
+        }
 
-            if (currentPanel.gameObject.activeSelf)
+        if (null != currentPanel)
+        {
+            currentPanel.gameObject.SetActive(true);
+            if (transition.IsAnimation)
             {
-                if (transition.IsAnimation)
-                {
-                    yield return currentPanel.OnHide();
-                }
-                currentPanel.gameObject.SetActive(false);
-                if (null != UIChangedExit)
-                {
-                    UIChangedExit.Invoke(currentPanel, transition.Type);
-                }
+                yield return currentPanel.OnShow();
             }
 
+            if (null != UIChangedEnter)
+            {
+                UIChangedEnter.Invoke(currentPanel, transition.Type);
+            }
         }
 
         if (transition.Type == TransitionTypeEnum.Replace || transition.Type == TransitionTypeEnum.Push)
         {
             currentPanel = transition.Next;
-            if (null != currentPanel)
-            {
-                uiStack.Push(currentPanel);
-                currentPanel.gameObject.SetActive(true);
-                if (transition.IsAnimation)
-                {
-                    yield return currentPanel.OnShow();
-                }
 
-                if (null != UIChangedEnter)
-                {
-                    UIChangedEnter.Invoke(currentPanel, transition.Type);
-                }
-            }
         }
 
         isStackProcessing = false;
@@ -402,6 +421,7 @@ public class UIManager : Singleton<UIManager>
                 if (transition.IsAnimation)
                     yield return currentPanel.OnShow();
                 currentPanel.gameObject.SetActive(true);
+                currentPanel.LastTransitionType = TransitionTypeEnum.Add;
 
                 if (null != UIChangedEnter)
                 {
@@ -413,10 +433,7 @@ public class UIManager : Singleton<UIManager>
 
     private void OnUIPanelEnter(UIPanel panel, TransitionTypeEnum type)
     {
-        if (null != panel)
-        {
-            panel.LastTransitionType = type;
-        }
+
     }
 
     /// <summary>

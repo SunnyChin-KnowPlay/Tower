@@ -216,6 +216,11 @@ public class UIMain : UIPanel
     /// </summary>
     private void OnClickTower()
     {
+        var towerPanel = uiManager.LoadPanel<UITowerPanel>(UITowerPanel.Key);
+        if (null != towerPanel)
+        {
+            uiManager.Push(towerPanel);
+        }
         UnityEngine.Debug.Log("OnClickTower");
     }
 

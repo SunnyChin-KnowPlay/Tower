@@ -11,4 +11,13 @@ public class UIHomePanel : UIPanel
     {
 
     }
+
+    public void OnClickOpenTask()
+    {
+        var taskPanel = uiManager.LoadPanel<UITaskPanel>(UITaskPanel.Key);
+        if(null != taskPanel)
+        {
+            uiManager.Push(taskPanel);
+        }
+    }
 }

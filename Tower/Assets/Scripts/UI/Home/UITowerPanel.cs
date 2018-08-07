@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UITowerPanel : MonoBehaviour {
+public class UITowerPanel : UIPanel
+{
+    public const string Key = "UI/Prefabs/Home/TowerPanel";
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    protected override void Start()
+    {
+        base.Start();
+
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
