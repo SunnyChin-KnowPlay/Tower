@@ -10,7 +10,7 @@ public class StartupManager : MonoBehaviour
     {
         uiManager = UIManager.Instance;
 
-        
+
     }
 
     // Use this for initialization

@@ -149,8 +149,8 @@ namespace Dream.Editor.Utilities
                     float percent = (float)i / (float)filesCount;
 
                     string modelName = Path.GetFileNameWithoutExtension(filePath);
-                    string codeFileName = Path.Combine(tablesCodePath, modelName + "Model.cs");
-                    string csvFileName = Path.Combine(tableCSVPath, modelName + "Model.csv");
+                    string codeFileName = Path.Combine(tablesCodePath, modelName + "Table.cs");
+                    string csvFileName = Path.Combine(tableCSVPath, modelName + "Table.csv");
 
                     EditorUtility.DisplayProgressBar("正在处理表格", "表格:" + modelName, percent);
 

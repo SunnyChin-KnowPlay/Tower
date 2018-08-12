@@ -61,18 +61,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GUIPack-Clean&amp;Minimalist\Demo\Scripts\BasicButton.cs" />
+    <Compile Include="Assets\GUIPack-Clean&amp;Minimalist\Demo\Scripts\Popup.cs" />
+    <Compile Include="Assets\GUIPack-Clean&amp;Minimalist\Demo\Scripts\PopupOpener.cs" />
+    <Compile Include="Assets\GUIPack-Clean&amp;Minimalist\Demo\Scripts\SceneTransition.cs" />
+    <Compile Include="Assets\GUIPack-Clean&amp;Minimalist\Demo\Scripts\SpriteSwapper.cs" />
+    <Compile Include="Assets\GUIPack-Clean&amp;Minimalist\Demo\Scripts\Tooltip.cs" />
+    <Compile Include="Assets\GUIPack-Clean&amp;Minimalist\Demo\Scripts\Transition.cs" />
+    <Compile Include="Assets\GUIPack-Clean&amp;Minimalist\Demo\Scripts\Utils.cs" />
     <Compile Include="Assets\Scripts\Home\HomeManager.cs" />
     <Compile Include="Assets\Scripts\Models\Base\BaseInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Base\BaseModel.cs" />
     <Compile Include="Assets\Scripts\Models\Base\IModel.cs" />
     <Compile Include="Assets\Scripts\Models\BuildModel.cs" />
+    <Compile Include="Assets\Scripts\Models\Common\Defined.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\BuildInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\HomeInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\HouseInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\ResourcesInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\SpriteInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\TowerInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\UserInfo.cs" />
     <Compile Include="Assets\Scripts\Models\ModelManager.cs" />
+    <Compile Include="Assets\Scripts\Models\SpritesModel.cs" />
     <Compile Include="Assets\Scripts\Models\UserModel.cs" />
     <Compile Include="Assets\Scripts\Network\Agent.cs" />
     <Compile Include="Assets\Scripts\Network\Protocols\Src\Common\AckConnect.cs" />
@@ -82,7 +93,9 @@
     <Compile Include="Assets\Scripts\Network\Protocols\Src\Common\UserInfo.cs" />
     <Compile Include="Assets\Scripts\Network\Protocols\Src\ProtocolManager.cs" />
     <Compile Include="Assets\Scripts\Startup\StartupManager.cs" />
-    <Compile Include="Assets\Scripts\Tables\Src\SpritesModel.cs" />
+    <Compile Include="Assets\Scripts\Tables\Extends\SpriteTable.cs" />
+    <Compile Include="Assets\Scripts\Tables\Src\HousesTable.cs" />
+    <Compile Include="Assets\Scripts\Tables\Src\SpritesTable.cs" />
     <Compile Include="Assets\Scripts\Tables\Src\TableManager.cs" />
     <Compile Include="Assets\Scripts\UI\Bases\IUIPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Bases\UIPanel.cs" />
@@ -97,6 +110,7 @@
     <Compile Include="Assets\Scripts\UI\Home\UITaskPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Home\UITowerPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Management\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Sprites\UISpriteItem.cs" />
     <Compile Include="Assets\Scripts\UI\UIMain.cs" />
     <Compile Include="Assets\Scripts\UI\UIStartup.cs" />
     <None Include="Assets\FantasyIconsMegaPack\ReadMe.txt" />

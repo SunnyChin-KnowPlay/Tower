@@ -43,10 +43,6 @@ public class UIMain : UIPanel
     protected override void Start()
     {
         base.Start();
-
-        int v = transform.GetSiblingIndex();
-        int d = 1;
-
     }
 
     protected virtual void OnEnable()
@@ -77,7 +73,6 @@ public class UIMain : UIPanel
         var resourcesInfo = userInfo.ResourcesInfo;
         if (null != resourcesInfo)
         {
-
             if (null != obj)
             {
                 GameObject go = null;
@@ -125,7 +120,7 @@ public class UIMain : UIPanel
         systemButton = go.GetComponentOrAdd<UISystemButton>();
         if (null != systemButton)
         {
-            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/01");
+            iconSprite = Resources.Load<Sprite>("UI/Icons/Icons-White_PNG/Home-Icon");
             systemButton.Setup(iconSprite, "老家");
             systemButton.IconButton.onClick.AddListener(OnClickHome);
             systemButtonGrid.transform.AddChild(systemButton.transform);
@@ -135,7 +130,7 @@ public class UIMain : UIPanel
         systemButton = go.GetComponentOrAdd<UISystemButton>();
         if (null != systemButton)
         {
-            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/02");
+            iconSprite = Resources.Load<Sprite>("UI/Icons/Icons-White_PNG/Book-Opened-Icon");
             systemButton.Setup(iconSprite, "任务");
             systemButton.IconButton.onClick.AddListener(OnClickTask);
             systemButtonGrid.transform.AddChild(systemButton.transform);
@@ -145,8 +140,8 @@ public class UIMain : UIPanel
         systemButton = go.GetComponentOrAdd<UISystemButton>();
         if (null != systemButton)
         {
-            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/03");
-            systemButton.Setup(iconSprite, "塔");
+            iconSprite = Resources.Load<Sprite>("UI/Icons/Icons-White_PNG/Canon-Icon");
+            systemButton.Setup(iconSprite, "炮塔");
             systemButton.IconButton.onClick.AddListener(OnClickTower);
             systemButtonGrid.transform.AddChild(systemButton.transform);
         }
@@ -155,7 +150,7 @@ public class UIMain : UIPanel
         systemButton = go.GetComponentOrAdd<UISystemButton>();
         if (null != systemButton)
         {
-            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/04");
+            iconSprite = Resources.Load<Sprite>("UI/Icons/Icons-White_PNG/Map-Icon");
             systemButton.Setup(iconSprite, "房子");
             systemButton.IconButton.onClick.AddListener(OnClickHouse);
             systemButtonGrid.transform.AddChild(systemButton.transform);
@@ -165,8 +160,8 @@ public class UIMain : UIPanel
         systemButton = go.GetComponentOrAdd<UISystemButton>();
         if (null != systemButton)
         {
-            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/05");
-            systemButton.Setup(iconSprite, "精灵面板");
+            iconSprite = Resources.Load<Sprite>("UI/Icons/Icons-White_PNG/Apple-Icon");
+            systemButton.Setup(iconSprite, "精灵");
             systemButton.IconButton.onClick.AddListener(OnClickSprite);
             systemButtonGrid.transform.AddChild(systemButton.transform);
         }
@@ -175,8 +170,8 @@ public class UIMain : UIPanel
         systemButton = go.GetComponentOrAdd<UISystemButton>();
         if (null != systemButton)
         {
-            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/06");
-            systemButton.Setup(iconSprite, "水晶面板");
+            iconSprite = Resources.Load<Sprite>("UI/Icons/Icons-White_PNG/Diamond-Icon");
+            systemButton.Setup(iconSprite, "水晶");
             systemButton.IconButton.onClick.AddListener(OnClickCrystal);
             systemButtonGrid.transform.AddChild(systemButton.transform);
         }
@@ -229,12 +224,23 @@ public class UIMain : UIPanel
     /// </summary>
     private void OnClickHouse()
     {
+        var housePanel = uiManager.LoadPanel<UIHousePanel>(UIHousePanel.Key);
+        if (null != housePanel)
+        {
+            uiManager.Push(housePanel);
+        }
         UnityEngine.Debug.Log("OnClickHouse");
     }
 
 
     private void OnClickSprite()
     {
+        var spritePanel = uiManager.LoadPanel<UISpritePanel>(UISpritePanel.Key);
+        if (null != spritePanel)
+        {
+            uiManager.Push(spritePanel);
+
+        }
         UnityEngine.Debug.Log("OnClickSprite");
     }
 

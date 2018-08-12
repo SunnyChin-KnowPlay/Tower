@@ -1,0 +1,8 @@
+C:\Users\sunny\Projects\Tower\Tower_Server\TestDemo\bin\Debug\netcoreapp2.0\TestDemo.deps.json
+C:\Users\sunny\Projects\Tower\Tower_Server\TestDemo\bin\Debug\netcoreapp2.0\TestDemo.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\TestDemo\bin\Debug\netcoreapp2.0\TestDemo.pdb
+C:\Users\sunny\Projects\Tower\Tower_Server\TestDemo\obj\Debug\netcoreapp2.0\TestDemo.csproj.CoreCompileInputs.cache
+C:\Users\sunny\Projects\Tower\Tower_Server\TestDemo\obj\Debug\netcoreapp2.0\TestDemo.AssemblyInfoInputs.cache
+C:\Users\sunny\Projects\Tower\Tower_Server\TestDemo\obj\Debug\netcoreapp2.0\TestDemo.AssemblyInfo.cs
+C:\Users\sunny\Projects\Tower\Tower_Server\TestDemo\obj\Debug\netcoreapp2.0\TestDemo.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\TestDemo\obj\Debug\netcoreapp2.0\TestDemo.pdb

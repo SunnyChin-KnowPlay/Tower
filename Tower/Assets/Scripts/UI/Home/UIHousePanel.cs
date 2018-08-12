@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIHousePanel : MonoBehaviour {
+public class UIHousePanel : UIPanel
+{
 
-	// Use this for initialization
-	void Start () {
+
+    public const string Key = "UI/Prefabs/Home/HousePanel";
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void OnClickOpenHouse()
+    {
+        var housePanel = uiManager.LoadPanel<UIHousePanel>(UIHousePanel.Key);
+        if (null != housePanel)
+        {
+            uiManager.Push(housePanel);
+        }
+    }
 }

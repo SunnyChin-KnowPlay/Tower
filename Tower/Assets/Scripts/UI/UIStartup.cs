@@ -21,21 +21,7 @@ public class UIStartup : UIPanel
     protected override void Start()
     {
         base.Start();
-        LoginReq loginReq = new LoginReq();
-        loginReq.C1 = "123";
-        loginReq.C3 = "111";
-
-        byte[] datas = new byte[512];
-
-        int index = 0;
-        loginReq.Encode(datas, ref index);
-
-        System.IO.MemoryStream ms = new System.IO.MemoryStream(datas);
-
-        LoginReq loginReq2 = new LoginReq();
-        loginReq2.Decode(ms);
-
-        int d = 1;
+        
 
         StartCoroutine(PreloadAssets());
 

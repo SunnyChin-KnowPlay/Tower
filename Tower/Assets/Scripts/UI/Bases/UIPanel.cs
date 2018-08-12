@@ -57,7 +57,7 @@ public class UIPanel : MonoBehaviour, IUIPanel
         }
 
         animator.SetTrigger("Out");
-
+        yield return new WaitForEndOfFrame();
         while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
         {
             yield return new WaitForEndOfFrame();
