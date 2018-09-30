@@ -1,6 +1,6 @@
 ﻿using DreamEngine.Utilities;
 
-public abstract class BaseModel<T> : IModel, IResetable where T : BaseModel<T>
+public abstract class BaseModel : IModel, IResetable
 {
     /// <summary>
     /// 获取本数据模块的键

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class UserModel : BaseModel<UserModel>
+public class UserModel : BaseModel
 {
     public const string Key = "User";
 
@@ -41,10 +41,7 @@ public class UserModel : BaseModel<UserModel>
         UserInfo userInfo = new UserInfo();
         userInfo.Uuid = Guid.NewGuid();
         userInfo.Name = "陈斌";
-        userInfo.ResourcesInfo.SpriteCount = 999;
-        userInfo.ResourcesInfo.LightCount = 10;
-        userInfo.ResourcesInfo.CrystalCount = 1000;
-
+     
         selfUserInfo = userInfo;
         users.Add(userInfo.Uuid, userInfo);
     }

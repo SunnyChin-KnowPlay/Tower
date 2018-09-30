@@ -5,7 +5,7 @@ public class ModelManager : Singleton<ModelManager>
 {
     private Dictionary<string, IModel> models;
 
-    public T GetModel<T>(string key) where T : BaseModel<T>
+    public T GetModel<T>(string key) where T : BaseModel
     {
         if (models.ContainsKey(key))
         {
@@ -41,7 +41,7 @@ public class ModelManager : Singleton<ModelManager>
     private void SetupModels()
     {
         models.Add(UserModel.Key, new UserModel());
-        models.Add(BuildModel.Key, new BuildModel());
+     
     }
 
     /// <summary>

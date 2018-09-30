@@ -11,41 +11,24 @@ public class ResourcesInfo : BaseInfo
     public enum ResourceTypeEnum
     {
         Min = 1,
-        Sprite = 1,
-        Crystal,
-        Light,
+        Gold = 1,
+        Diamond,
         Max,
     }
 
-    /// <summary>
-    /// 精灵的个数
-    /// </summary>
-    public int SpriteCount
+    private int gold = 0;
+    public int Gold
     {
-        get { return spriteCount; }
-        set { spriteCount = value; }
+        get { return gold; }
+        set { gold = value; }
     }
-    protected int spriteCount;
 
-    /// <summary>
-    /// 水晶的个数
-    /// </summary>
-    public int CrystalCount
+    private int diamond = 0;
+    public int Diamond
     {
-        get { return crystalCount; }
-        set { crystalCount = value; }
+        get { return diamond; }
+        set { diamond = value; }
     }
-    protected int crystalCount;
-
-    /// <summary>
-    /// 光的数量
-    /// </summary>
-    public int LightCount
-    {
-        get { return lightCount; }
-        set { lightCount = value; }
-    }
-    public int lightCount;
 
     /// <summary>
     /// 通过资源枚举 获取对应的资源数量
@@ -56,12 +39,10 @@ public class ResourcesInfo : BaseInfo
     {
         switch (type)
         {
-            case ResourceTypeEnum.Sprite:
-                return SpriteCount;
-            case ResourceTypeEnum.Crystal:
-                return CrystalCount;
-            case ResourceTypeEnum.Light:
-                return LightCount;
+            case ResourceTypeEnum.Gold:
+                return Gold;
+            case ResourceTypeEnum.Diamond:
+                return Diamond;
         }
 
         return -1;

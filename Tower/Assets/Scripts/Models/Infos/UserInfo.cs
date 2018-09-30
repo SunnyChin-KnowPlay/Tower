@@ -34,12 +34,7 @@ public class UserInfo : BaseInfo
     {
         get { return resourcesInfo; }
     }
-
     protected ResourcesInfo resourcesInfo;
-
-    
-
-
 
     public UserInfo()
     {
