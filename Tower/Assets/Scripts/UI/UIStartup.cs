@@ -21,7 +21,7 @@ public class UIStartup : UIPanel
     protected override void Start()
     {
         base.Start();
-        
+
 
         StartCoroutine(PreloadAssets());
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 public class PlayerInfo : BaseInfo
@@ -20,8 +21,30 @@ public class PlayerInfo : BaseInfo
         /// <summary>
         /// 对方
         /// </summary>
-        Opponent = 3,
+        Opponent = 4,
     }
+
+    /// <summary>
+    /// 索引位 0-9
+    /// </summary>
+    [XmlElement("Index")]
+    public int Index
+    {
+        get { return index; }
+        set { index = value; }
+    }
+    protected int index = 0;
+
+    /// <summary>
+    /// 战场上的位置 0-9
+    /// </summary>
+    [XmlElement("Position")]
+    public int Position
+    {
+        get { return position; }
+        set { position = value; }
+    }
+    protected int position = 0;
 
     /// <summary>
     /// 角色唯一ID
@@ -66,4 +89,32 @@ public class PlayerInfo : BaseInfo
         set { relation = value; }
     }
     protected RelationEnum relation = RelationEnum.None;
+
+    /// <summary>
+    /// 技能队列
+    /// </summary>
+    public SkillInfo[] Skills
+    {
+        get { return skills.ToArray(); }
+        set
+        {
+            skills.Clear();
+            skills.AddRange(value);
+        }
+    }
+    protected List<SkillInfo> skills = null;
+
+    /// <summary>
+    /// Buff队列
+    /// </summary>
+    public BuffInfo[] Buffs
+    {
+        get { return buffs.ToArray(); }
+        set
+        {
+            buffs.Clear();
+            buffs.AddRange(value);
+        }
+    }
+    protected List<BuffInfo> buffs = null;
 }
