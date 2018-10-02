@@ -74,9 +74,12 @@
     <Compile Include="Assets\Scripts\Models\Base\BaseModel.cs" />
     <Compile Include="Assets\Scripts\Models\Base\IModel.cs" />
     <Compile Include="Assets\Scripts\Models\Common\Defined.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\ResourcesInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\SkillInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\UserInfo.cs" />
     <Compile Include="Assets\Scripts\Models\ModelManager.cs" />
+    <Compile Include="Assets\Scripts\Models\Models\BattleModel.cs" />
     <Compile Include="Assets\Scripts\Models\Models\UserModel.cs" />
     <Compile Include="Assets\Scripts\Network\Agent.cs" />
     <Compile Include="Assets\Scripts\Network\Protocols\Src\Common\AckConnect.cs" />
@@ -86,9 +89,8 @@
     <Compile Include="Assets\Scripts\Network\Protocols\Src\Common\UserInfo.cs" />
     <Compile Include="Assets\Scripts\Network\Protocols\Src\ProtocolManager.cs" />
     <Compile Include="Assets\Scripts\Startup\StartupManager.cs" />
-    <Compile Include="Assets\Scripts\Tables\Extends\SpriteTable.cs" />
-    <Compile Include="Assets\Scripts\Tables\Src\HousesTable.cs" />
-    <Compile Include="Assets\Scripts\Tables\Src\SpritesTable.cs" />
+    <Compile Include="Assets\Scripts\Tables\Src\BuffTable.cs" />
+    <Compile Include="Assets\Scripts\Tables\Src\SkillTable.cs" />
     <Compile Include="Assets\Scripts\Tables\Src\TableManager.cs" />
     <Compile Include="Assets\Scripts\UI\Bases\IUIPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Bases\UIPanel.cs" />

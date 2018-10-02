@@ -41,7 +41,7 @@ public class ModelManager : Singleton<ModelManager>
     private void SetupModels()
     {
         models.Add(UserModel.Key, new UserModel());
-     
+        models.Add(BattleModel.Key, new BattleModel());
     }
 
     /// <summary>

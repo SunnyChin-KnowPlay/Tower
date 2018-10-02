@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace DreamEngine.Table
 {
-	public partial class SpritesRow : BaseRow
+	public partial class BuffRow : BaseRow
 	{
 		private int m_Id;
 		/// <summary>
@@ -17,15 +17,15 @@ namespace DreamEngine.Table
 				return m_Id;
 			}
 		}
-		private int m_Type;
+		private int m_Nature;
 		/// <summary>
-		/// 精灵类型
+		/// 自然天赋
 		/// </summary>
-		public int Type
+		public int Nature
 		{
 			get
 			{
-				return m_Type;
+				return m_Nature;
 			}
 		}
 		private string m_Name;
@@ -39,59 +39,15 @@ namespace DreamEngine.Table
 				return m_Name;
 			}
 		}
-		private int m_MaxLevel;
+		private int m_Duration;
 		/// <summary>
-		/// 最大等级
+		/// 存在的回合数
 		/// </summary>
-		public int MaxLevel
+		public int Duration
 		{
 			get
 			{
-				return m_MaxLevel;
-			}
-		}
-		private int m_MakeSrcID;
-		/// <summary>
-		/// 合成原
-		/// </summary>
-		public int MakeSrcID
-		{
-			get
-			{
-				return m_MakeSrcID;
-			}
-		}
-		private int m_MakeNum;
-		/// <summary>
-		/// 合成数量
-		/// </summary>
-		public int MakeNum
-		{
-			get
-			{
-				return m_MakeNum;
-			}
-		}
-		private int m_CreateTargetID;
-		/// <summary>
-		/// 产生目标
-		/// </summary>
-		public int CreateTargetID
-		{
-			get
-			{
-				return m_CreateTargetID;
-			}
-		}
-		private int m_CreateNum;
-		/// <summary>
-		/// 产生的数量
-		/// </summary>
-		public int CreateNum
-		{
-			get
-			{
-				return m_CreateNum;
+				return m_Duration;
 			}
 		}
 		private string m_Icon;
@@ -111,22 +67,18 @@ namespace DreamEngine.Table
 			string[] paramList = row.Split(commaSeparator);
 
 			Parse(paramList[0], ref m_Id);
-			Parse(paramList[1], ref m_Type);
+			Parse(paramList[1], ref m_Nature);
 			Parse(paramList[2], ref m_Name);
-			Parse(paramList[3], ref m_MaxLevel);
-			Parse(paramList[4], ref m_MakeSrcID);
-			Parse(paramList[5], ref m_MakeNum);
-			Parse(paramList[6], ref m_CreateTargetID);
-			Parse(paramList[7], ref m_CreateNum);
-			Parse(paramList[8], ref m_Icon);
+			Parse(paramList[3], ref m_Duration);
+			Parse(paramList[4], ref m_Icon);
 		}
 
 	}
 
-	public partial class SpritesTable : Singleton<SpritesTable>, IEnumerable<KeyValuePair<int, SpritesRow>>
+	public partial class BuffTable : Singleton<BuffTable>, IEnumerable<KeyValuePair<int, BuffRow>>
 	{
 		private const char rowSeparator = '\r';
-		private Dictionary<int, SpritesRow> m_Rows = new Dictionary<int, SpritesRow>();
+		private Dictionary<int, BuffRow> m_Rows = new Dictionary<int, BuffRow>();
 
 		public delegate void OnParseFinished(string strData);
 		public event OnParseFinished ParseFinished;
@@ -138,7 +90,7 @@ namespace DreamEngine.Table
 
 			string[] rowList = data.Split(rowSeparator);
 
-			SpritesRow row = null;
+			BuffRow row = null;
 			for (int i = 0; i < rowList.Length; i++)
 			{
 				string rowText = rowList[i];
@@ -156,7 +108,7 @@ namespace DreamEngine.Table
 				}
 				else
 				{
-					row = new SpritesRow();
+					row = new BuffRow();
 					row.Parse(rowText);
 					m_Rows.Add(row.Id, row);
 				}
@@ -168,23 +120,23 @@ namespace DreamEngine.Table
 			return m_Rows.ContainsKey(key);
 		}
 
-		public SpritesRow GetRow(int key)
+		public BuffRow GetRow(int key)
         {
 			if (!m_Rows.ContainsKey(key))
 			{
-				UnityEngine.Debug.LogError(string.Format("not found key:{0} and with in:{1} table.", key, "Sprites"));
+				UnityEngine.Debug.LogError(string.Format("not found key:{0} and with in:{1} table.", key, "Buff"));
 				return null;
 			}
             return m_Rows[key];
         }
 
-        public SpritesRow this[int key]
+        public BuffRow this[int key]
 		{
 			get
 			{
 				if (!m_Rows.ContainsKey(key))
 				{
-					UnityEngine.Debug.LogError(string.Format("not found key:{0} and with in:{1} table.", key, "Sprites"));
+					UnityEngine.Debug.LogError(string.Format("not found key:{0} and with in:{1} table.", key, "Buff"));
 					return null;
 				}
 				return m_Rows[key];
@@ -199,14 +151,14 @@ namespace DreamEngine.Table
 			}
 		}
 
-		public IEnumerator<KeyValuePair<int, SpritesRow>> GetEnumerator()
+		public IEnumerator<KeyValuePair<int, BuffRow>> GetEnumerator()
 		{
-			return ((IEnumerable<KeyValuePair<int, SpritesRow>>)m_Rows).GetEnumerator();
+			return ((IEnumerable<KeyValuePair<int, BuffRow>>)m_Rows).GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return ((IEnumerable<KeyValuePair<int, SpritesRow>>)m_Rows).GetEnumerator();
+			return ((IEnumerable<KeyValuePair<int, BuffRow>>)m_Rows).GetEnumerator();
 		}
 	}
 }

@@ -9,12 +9,12 @@ namespace DreamEngine.Table
 	{
 		public void Parse(Dictionary<string, string> dict)
 		{
-			HousesTable HousesTableObj = HousesTable.Instance;
-			if (dict.ContainsKey("HousesTable"))
-				HousesTableObj.Parse(dict["HousesTable"]);
-			SpritesTable SpritesTableObj = SpritesTable.Instance;
-			if (dict.ContainsKey("SpritesTable"))
-				SpritesTableObj.Parse(dict["SpritesTable"]);
+			BuffTable BuffTableObj = BuffTable.Instance;
+			if (dict.ContainsKey("BuffTable"))
+				BuffTableObj.Parse(dict["BuffTable"]);
+			SkillTable SkillTableObj = SkillTable.Instance;
+			if (dict.ContainsKey("SkillTable"))
+				SkillTableObj.Parse(dict["SkillTable"]);
 		}
 	}
 }

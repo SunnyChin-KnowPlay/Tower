@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace DreamEngine.Table
 {
-	public partial class HousesRow : BaseRow
+	public partial class SkillRow : BaseRow
 	{
 		private int m_Id;
 		/// <summary>
@@ -17,15 +17,15 @@ namespace DreamEngine.Table
 				return m_Id;
 			}
 		}
-		private int m_Type;
+		private int m_Nature;
 		/// <summary>
-		/// 房子类型
+		/// 自然天赋
 		/// </summary>
-		public int Type
+		public int Nature
 		{
 			get
 			{
-				return m_Type;
+				return m_Nature;
 			}
 		}
 		private string m_Name;
@@ -37,39 +37,6 @@ namespace DreamEngine.Table
 			get
 			{
 				return m_Name;
-			}
-		}
-		private int m_MaxLevel;
-		/// <summary>
-		/// 最大等级
-		/// </summary>
-		public int MaxLevel
-		{
-			get
-			{
-				return m_MaxLevel;
-			}
-		}
-		private int m_MakeNum;
-		/// <summary>
-		/// 合成数量
-		/// </summary>
-		public int MakeNum
-		{
-			get
-			{
-				return m_MakeNum;
-			}
-		}
-		private int m_CreateNum;
-		/// <summary>
-		/// 产生的数量
-		/// </summary>
-		public int CreateNum
-		{
-			get
-			{
-				return m_CreateNum;
 			}
 		}
 		private string m_Icon;
@@ -89,20 +56,17 @@ namespace DreamEngine.Table
 			string[] paramList = row.Split(commaSeparator);
 
 			Parse(paramList[0], ref m_Id);
-			Parse(paramList[1], ref m_Type);
+			Parse(paramList[1], ref m_Nature);
 			Parse(paramList[2], ref m_Name);
-			Parse(paramList[3], ref m_MaxLevel);
-			Parse(paramList[4], ref m_MakeNum);
-			Parse(paramList[5], ref m_CreateNum);
-			Parse(paramList[6], ref m_Icon);
+			Parse(paramList[3], ref m_Icon);
 		}
 
 	}
 
-	public partial class HousesTable : Singleton<HousesTable>, IEnumerable<KeyValuePair<int, HousesRow>>
+	public partial class SkillTable : Singleton<SkillTable>, IEnumerable<KeyValuePair<int, SkillRow>>
 	{
 		private const char rowSeparator = '\r';
-		private Dictionary<int, HousesRow> m_Rows = new Dictionary<int, HousesRow>();
+		private Dictionary<int, SkillRow> m_Rows = new Dictionary<int, SkillRow>();
 
 		public delegate void OnParseFinished(string strData);
 		public event OnParseFinished ParseFinished;
@@ -114,7 +78,7 @@ namespace DreamEngine.Table
 
 			string[] rowList = data.Split(rowSeparator);
 
-			HousesRow row = null;
+			SkillRow row = null;
 			for (int i = 0; i < rowList.Length; i++)
 			{
 				string rowText = rowList[i];
@@ -132,7 +96,7 @@ namespace DreamEngine.Table
 				}
 				else
 				{
-					row = new HousesRow();
+					row = new SkillRow();
 					row.Parse(rowText);
 					m_Rows.Add(row.Id, row);
 				}
@@ -144,23 +108,23 @@ namespace DreamEngine.Table
 			return m_Rows.ContainsKey(key);
 		}
 
-		public HousesRow GetRow(int key)
+		public SkillRow GetRow(int key)
         {
 			if (!m_Rows.ContainsKey(key))
 			{
-				UnityEngine.Debug.LogError(string.Format("not found key:{0} and with in:{1} table.", key, "Houses"));
+				UnityEngine.Debug.LogError(string.Format("not found key:{0} and with in:{1} table.", key, "Skill"));
 				return null;
 			}
             return m_Rows[key];
         }
 
-        public HousesRow this[int key]
+        public SkillRow this[int key]
 		{
 			get
 			{
 				if (!m_Rows.ContainsKey(key))
 				{
-					UnityEngine.Debug.LogError(string.Format("not found key:{0} and with in:{1} table.", key, "Houses"));
+					UnityEngine.Debug.LogError(string.Format("not found key:{0} and with in:{1} table.", key, "Skill"));
 					return null;
 				}
 				return m_Rows[key];
@@ -175,14 +139,14 @@ namespace DreamEngine.Table
 			}
 		}
 
-		public IEnumerator<KeyValuePair<int, HousesRow>> GetEnumerator()
+		public IEnumerator<KeyValuePair<int, SkillRow>> GetEnumerator()
 		{
-			return ((IEnumerable<KeyValuePair<int, HousesRow>>)m_Rows).GetEnumerator();
+			return ((IEnumerable<KeyValuePair<int, SkillRow>>)m_Rows).GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return ((IEnumerable<KeyValuePair<int, HousesRow>>)m_Rows).GetEnumerator();
+			return ((IEnumerable<KeyValuePair<int, SkillRow>>)m_Rows).GetEnumerator();
 		}
 	}
 }
