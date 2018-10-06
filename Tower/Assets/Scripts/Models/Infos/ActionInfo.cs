@@ -3,8 +3,20 @@
 public class ActionInfo : BaseInfo
 {
     /// <summary>
+    /// 执行顺位
+    /// </summary>
+    [XmlElement("Index")]
+    public int Index
+    {
+        get { return index; }
+        set { index = value; }
+    }
+    protected int index = 0;
+
+    /// <summary>
     /// 发起者的单位类型
     /// </summary>
+    [XmlElement("LaunchUnitType")]
     public ActionUnitTypeEnum LaunchUnitType
     {
         get { return launchUnitType; }
@@ -26,6 +38,7 @@ public class ActionInfo : BaseInfo
     /// <summary>
     /// 主目标的单位类型
     /// </summary>
+    [XmlElement("MainTargetUnitType")]
     public ActionUnitTypeEnum MainTargetUnitType
     {
         get { return mainTargetUnitType; }
