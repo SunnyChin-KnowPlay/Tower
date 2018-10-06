@@ -1,4 +1,6 @@
 ﻿using Dream.Extension.Unity;
+using Dream.Utilities;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,11 +20,18 @@ public class PlayerControl : MonoBehaviour, IPlayerControl
     /// </summary>
     private PlayerAnimControl animControl = null;
 
+    /// <summary>
+    /// 战场控制
+    /// </summary>
+    private BattleControl battleControl = null;
+
     private List<IPlayerControl> controls = null;
 
     public void Awake()
     {
         controls = new List<IPlayerControl>();
+
+        battleControl = this.FindComponentInScene<BattleControl>("Battle");
 
         animControl = this.GetComponentOrAdd<PlayerAnimControl>();
         controls.Add(animControl);
@@ -54,5 +63,33 @@ public class PlayerControl : MonoBehaviour, IPlayerControl
             }
         }
     }
+    #endregion
+
+    #region Action
+    /// <summary>
+    /// 落位
+    /// 通过battle寻找格子的位置值
+    /// </summary>
+    public void Place()
+    {
+        var grid = battleControl.GetGrid(this.playerInfo.Position);
+        if (null == grid)
+            return;
+
+        this.transform.position = grid.transform.position;
+    }
+
+    /// <summary>
+    /// 跳跃回原位置
+    /// </summary>
+    /// <param name="duration">耗时</param>
+    /// <returns></returns>
+    public IEnumerator JumpToOrigin(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        this.Place();
+    }
+
     #endregion
 }

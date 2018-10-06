@@ -25,7 +25,7 @@ public class PlayerInfo : BaseInfo
     }
 
     /// <summary>
-    /// 索引位 0-9
+    /// 索引位 1-10
     /// </summary>
     [XmlElement("Index")]
     public int Index
@@ -36,7 +36,7 @@ public class PlayerInfo : BaseInfo
     protected int index = 0;
 
     /// <summary>
-    /// 战场上的位置 0-9
+    /// 战场上的位置 1-10
     /// </summary>
     [XmlElement("Position")]
     public int Position
@@ -80,7 +80,7 @@ public class PlayerInfo : BaseInfo
     protected int hp = 0;
 
     /// <summary>
-    /// 与玩家自己的关系
+    /// 与角色的关系
     /// </summary>
     [XmlElement("Relation")]
     public RelationEnum Relation
@@ -117,4 +117,10 @@ public class PlayerInfo : BaseInfo
         }
     }
     protected List<BuffInfo> buffs = null;
+
+    public PlayerInfo()
+    {
+        skills = new List<SkillInfo>();
+        buffs = new List<BuffInfo>();
+    }
 }

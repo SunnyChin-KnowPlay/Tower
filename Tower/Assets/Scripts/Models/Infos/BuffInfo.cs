@@ -3,6 +3,14 @@ using System.Xml.Serialization;
 
 public class BuffInfo : BaseInfo
 {
+    /// <summary>
+    /// Buff类型枚举
+    /// </summary>
+    public enum BuffTypeEnum
+    {
+        Buff = 1,
+        Debuff = 2,
+    }
 
     /// <summary>
     /// 索引位
@@ -38,4 +46,23 @@ public class BuffInfo : BaseInfo
             return null;
         }
     }
+
+    /// <summary>
+    /// 剩余的回合数 当回合数为0时 则代表buff失效
+    /// </summary>
+    public int RemainingRounds
+    {
+        get { return remainingRounds; }
+        set { remainingRounds = value; }
+    }
+    protected int remainingRounds = 0;
+
+    /// <summary>
+    /// Buff类型
+    /// </summary>
+    public BuffTypeEnum BuffType
+    {
+        get; set;
+    }
+
 }

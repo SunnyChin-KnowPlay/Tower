@@ -9,13 +9,20 @@ public class BattleModel : BaseModel
 {
     public const string Key = "Battle";
 
+    /// <summary>
+    /// 所有角色的词典
+    /// </summary>
     private Dictionary<int, PlayerInfo> allPlayers = null;
+
+    /// <summary>
+    /// 当前回合需要执行的行动队列
+    /// </summary>
+    private List<ActionInfo> currentActions = null;
 
     public BattleModel()
     {
         allPlayers = new Dictionary<int, PlayerInfo>();
-
-        var s1 = GetAllPlayers();
+        currentActions = new List<ActionInfo>();
     }
 
     public static BattleModel Instance
@@ -67,6 +74,32 @@ public class BattleModel : BaseModel
     public PlayerInfo[] GetOpponentPlayers()
     {
         return GetPlayers(PlayerInfo.RelationEnum.Opponent);
+    }
+    #endregion
+
+    #region Action
+    /// <summary>
+    /// 当前回合内是否还有剩余的需要执行的行动
+    /// </summary>
+    /// <returns></returns>
+    public bool HasRemainderActionsInCurrentRound()
+    {
+        return currentActions != null && currentActions.Count > 0;
+    }
+
+    /// <summary>
+    /// 提取最新的一条行动
+    /// </summary>
+    /// <returns></returns>
+    public ActionInfo ExtractAction()
+    {
+        if (!HasRemainderActionsInCurrentRound())
+            return null;
+
+        var actionInfo = currentActions[0];
+        currentActions.RemoveAt(0);
+
+        return actionInfo;
     }
     #endregion
 

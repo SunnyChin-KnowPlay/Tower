@@ -70,11 +70,16 @@
     <Compile Include="Assets\GUIPack-Clean&amp;Minimalist\Demo\Scripts\Transition.cs" />
     <Compile Include="Assets\GUIPack-Clean&amp;Minimalist\Demo\Scripts\Utils.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleControl.cs" />
+    <Compile Include="Assets\Scripts\Battle\BattleGridBehaviour.cs" />
     <Compile Include="Assets\Scripts\Home\HomeManager.cs" />
     <Compile Include="Assets\Scripts\Models\Base\BaseInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Base\BaseModel.cs" />
     <Compile Include="Assets\Scripts\Models\Base\IModel.cs" />
     <Compile Include="Assets\Scripts\Models\Common\Defined.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\ActionBuffInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\ActionEffectInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\ActionInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\ActionSkillInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\BuffInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\ResourcesInfo.cs" />
@@ -94,6 +99,7 @@
     <Compile Include="Assets\Scripts\Players\PlayerAnimControl.cs" />
     <Compile Include="Assets\Scripts\Players\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\Players\PlayerFactory.cs" />
+    <Compile Include="Assets\Scripts\Players\PlayerRelation.cs" />
     <Compile Include="Assets\Scripts\Startup\StartupManager.cs" />
     <Compile Include="Assets\Scripts\Tables\Src\BuffTable.cs" />
     <Compile Include="Assets\Scripts\Tables\Src\SkillTable.cs" />

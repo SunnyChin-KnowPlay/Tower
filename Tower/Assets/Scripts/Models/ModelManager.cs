@@ -50,7 +50,6 @@ public class ModelManager : Singleton<ModelManager>
     public void Reset()
     {
         models.Clear();
-
         SetupModels();
     }
     #endregion
