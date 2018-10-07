@@ -15,7 +15,7 @@ public class ActionEffectInfo : BaseInfo
     /// <summary>
     /// 行动目标类型
     /// </summary>
-    public ActionUnitTypeEnum ActionType
+    public ActionUnitTypeEnum ActionTargetType
     {
         get { return actionTargetType; }
         set { actionTargetType = value; }
