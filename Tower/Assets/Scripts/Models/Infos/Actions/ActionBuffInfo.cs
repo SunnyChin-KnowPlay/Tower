@@ -1,5 +1,8 @@
 ﻿using System.Xml.Serialization;
 
+/// <summary>
+/// Buff所触发的行动信息
+/// </summary>
 public class ActionBuffInfo : ActionInfo
 {
     /// <summary>
@@ -12,5 +15,9 @@ public class ActionBuffInfo : ActionInfo
         set { buffIndex = value; }
     }
     protected int buffIndex = 0;
+
+    
+
+
 }
 

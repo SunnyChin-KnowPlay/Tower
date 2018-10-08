@@ -3,6 +3,17 @@
 public class ActionInfo : BaseInfo
 {
     /// <summary>
+    /// 行动类型
+    /// </summary>
+    [XmlElement("ActionType")]
+    public ActionTypeEnum ActionType
+    {
+        get { return actionType; }
+        set { actionType = value; }
+    }
+    protected ActionTypeEnum actionType;
+
+    /// <summary>
     /// 执行顺位
     /// </summary>
     [XmlElement("Index")]
@@ -35,27 +46,7 @@ public class ActionInfo : BaseInfo
     }
     protected int launchIndex = 0;
 
-    /// <summary>
-    /// 主目标的单位类型
-    /// </summary>
-    [XmlElement("MainTargetUnitType")]
-    public ActionUnitTypeEnum MainTargetUnitType
-    {
-        get { return mainTargetUnitType; }
-        set { mainTargetUnitType = value; }
-    }
-    protected ActionUnitTypeEnum mainTargetUnitType = ActionUnitTypeEnum.None;
-
-    /// <summary>
-    /// 主目标位置
-    /// </summary>
-    [XmlElement("MainTargetIndex")]
-    public int MainTargetIndex
-    {
-        get { return mainTargetIndex; }
-        set { mainTargetIndex = value; }
-    }
-    protected int mainTargetIndex = 0;
+    
 
 
 }

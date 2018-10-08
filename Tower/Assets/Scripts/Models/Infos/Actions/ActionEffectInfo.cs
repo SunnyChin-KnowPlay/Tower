@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 
+/// <summary>
+/// 行动效果信息
+/// </summary>
 public class ActionEffectInfo : BaseInfo
 {
     /// <summary>
@@ -33,14 +36,14 @@ public class ActionEffectInfo : BaseInfo
     protected int targetIndex = 0;
 
     /// <summary>
-    /// 伤害值
+    /// 血量改变值 增量值 如果是加血则是正值 如果是扣血则是负值 0的话说明并没有任何血量改变，仅仅是上下buff
     /// </summary>
-    public int HurtValue
+    public int HpChanged
     {
-        get { return hurtValue; }
-        set { hurtValue = value; }
+        get { return hpChanged; }
+        set { hpChanged = value; }
     }
-    protected int hurtValue = 0;
+    protected int hpChanged = 0;
 
     /// <summary>
     /// 获取Buff的改变列表
