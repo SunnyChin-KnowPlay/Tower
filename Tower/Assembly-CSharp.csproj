@@ -76,10 +76,11 @@
     <Compile Include="Assets\Scripts\Models\Base\BaseModel.cs" />
     <Compile Include="Assets\Scripts\Models\Base\IModel.cs" />
     <Compile Include="Assets\Scripts\Models\Common\Defined.cs" />
-    <Compile Include="Assets\Scripts\Models\Infos\ActionBuffInfo.cs" />
-    <Compile Include="Assets\Scripts\Models\Infos\ActionEffectInfo.cs" />
-    <Compile Include="Assets\Scripts\Models\Infos\ActionInfo.cs" />
-    <Compile Include="Assets\Scripts\Models\Infos\ActionSkillInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\Actions\ActionBattleInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\Actions\ActionBuffInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\Actions\ActionEffectInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\Actions\ActionInfo.cs" />
+    <Compile Include="Assets\Scripts\Models\Infos\Actions\ActionSkillInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\BuffInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Models\Infos\ResourcesInfo.cs" />

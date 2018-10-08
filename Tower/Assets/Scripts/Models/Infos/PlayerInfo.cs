@@ -69,6 +69,17 @@ public class PlayerInfo : BaseInfo
     protected string name = null;
 
     /// <summary>
+    /// 血量的上限
+    /// </summary>
+    [XmlElement("HpMax")]
+    public int HpMax
+    {
+        get { return hpMax; }
+        set { hpMax = value; }
+    }
+    protected int hpMax = 0;
+
+    /// <summary>
     /// 角色的血量
     /// </summary>
     [XmlElement("Hp")]
@@ -80,7 +91,7 @@ public class PlayerInfo : BaseInfo
     protected int hp = 0;
 
     /// <summary>
-    /// 与角色的关系
+    /// 与玩家控制的角色的关系
     /// </summary>
     [XmlElement("Relation")]
     public RelationEnum Relation
@@ -107,14 +118,9 @@ public class PlayerInfo : BaseInfo
     /// <summary>
     /// Buff队列
     /// </summary>
-    public BuffInfo[] Buffs
+    public List<BuffInfo> Buffs
     {
-        get { return buffs.ToArray(); }
-        set
-        {
-            buffs.Clear();
-            buffs.AddRange(value);
-        }
+        get { return buffs; }
     }
     protected List<BuffInfo> buffs = null;
 

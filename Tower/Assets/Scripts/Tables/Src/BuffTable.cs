@@ -50,6 +50,77 @@ namespace DreamEngine.Table
 				return m_Duration;
 			}
 		}
+		public class Trigger
+		{
+			public void InParse(string src)
+			{
+				var paramValue = src.Split('|');
+
+				Parse(paramValue[0],ref m_Moment);
+				Parse(paramValue[1],ref m_ActionType);
+				Parse(paramValue[2],ref m_Param1);
+				Parse(paramValue[3],ref m_Targets);
+			}
+
+		 
+			private uint m_Moment;
+			/// <summary>
+			/// 时刻节点，查阅枚举
+			/// </summary>
+			public uint Moment 
+			{
+				get
+				{
+					return m_Moment;
+				}
+			}
+		 
+			private uint m_ActionType;
+			/// <summary>
+			/// 行为类型，查阅枚举
+			/// </summary>
+			public uint ActionType 
+			{
+				get
+				{
+					return m_ActionType;
+				}
+			}
+		 
+			private int m_Param1;
+			/// <summary>
+			/// 参数1
+			/// </summary>
+			public int Param1 
+			{
+				get
+				{
+					return m_Param1;
+				}
+			}
+		 
+			private uint m_Targets;
+			/// <summary>
+			/// 目标位
+			/// </summary>
+			public uint Targets 
+			{
+				get
+				{
+					return m_Targets;
+				}
+			}
+		}
+
+		private List<Trigger> m_TriggerList = new List<Trigger>();	
+		public List<Trigger> TriggerList
+		{
+			get
+			{
+				return m_TriggerList;
+			}
+		}
+
 		private string m_Icon;
 		/// <summary>
 		/// 图标
@@ -70,9 +141,29 @@ namespace DreamEngine.Table
 			Parse(paramList[1], ref m_Nature);
 			Parse(paramList[2], ref m_Name);
 			Parse(paramList[3], ref m_Duration);
-			Parse(paramList[4], ref m_Icon);
+			m_TriggerList.Clear();
+			var param4List = paramList[4].Split(':');
+            for (int nCount = 0; nCount < 1; nCount++)
+            {
+				if(param4List[nCount] == "/")
+					continue;
+
+				m_TriggerList.Add(new Trigger());
+				m_TriggerList[nCount].InParse(param4List[nCount]);
+            }
+			Parse(paramList[5], ref m_Icon);
 		}
 
+		public Trigger TriggerFirst
+		{
+			get
+			{
+				if(TriggerList.Count <= 0)
+					return null;
+
+				return TriggerList[0];
+			}
+		}
 	}
 
 	public partial class BuffTable : Singleton<BuffTable>, IEnumerable<KeyValuePair<int, BuffRow>>

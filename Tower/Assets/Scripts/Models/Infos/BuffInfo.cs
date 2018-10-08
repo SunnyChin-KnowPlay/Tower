@@ -48,14 +48,24 @@ public class BuffInfo : BaseInfo
     }
 
     /// <summary>
-    /// 剩余的回合数 当回合数为0时 则代表buff失效
+    /// 距离上一次改变的次数
     /// </summary>
-    public int RemainingRounds
+    public int ChangedCount
     {
-        get { return remainingRounds; }
-        set { remainingRounds = value; }
+        get { return changedCount; }
+        set { changedCount = value; }
     }
-    protected int remainingRounds = 0;
+    protected int changedCount = 0;
+
+    /// <summary>
+    /// 叠加的次数 归0时则移除
+    /// </summary>
+    public int Count
+    {
+        get { return count; }
+        set { count = value; }
+    }
+    protected int count = 0;
 
     /// <summary>
     /// Buff类型
