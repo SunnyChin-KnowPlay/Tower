@@ -27,7 +27,6 @@ public class PlayerInfo : BaseInfo
     /// <summary>
     /// 索引位 1-10
     /// </summary>
-    [XmlElement("Index")]
     public int Index
     {
         get { return index; }
@@ -38,7 +37,6 @@ public class PlayerInfo : BaseInfo
     /// <summary>
     /// 战场上的位置 1-10
     /// </summary>
-    [XmlElement("Position")]
     public int Position
     {
         get { return position; }
@@ -49,7 +47,6 @@ public class PlayerInfo : BaseInfo
     /// <summary>
     /// 角色唯一ID
     /// </summary>
-    [XmlElement("Uid")]
     public Guid Uid
     {
         get { return uid; }
@@ -60,7 +57,6 @@ public class PlayerInfo : BaseInfo
     /// <summary>
     /// 角色的名字
     /// </summary>
-    [XmlElement("Name")]
     public string Name
     {
         get { return name; }
@@ -71,7 +67,6 @@ public class PlayerInfo : BaseInfo
     /// <summary>
     /// 血量的上限
     /// </summary>
-    [XmlElement("HpMax")]
     public int HpMax
     {
         get { return hpMax; }
@@ -82,7 +77,6 @@ public class PlayerInfo : BaseInfo
     /// <summary>
     /// 角色的血量
     /// </summary>
-    [XmlElement("Hp")]
     public int Hp
     {
         get { return hp; }
@@ -93,7 +87,6 @@ public class PlayerInfo : BaseInfo
     /// <summary>
     /// 与玩家控制的角色的关系
     /// </summary>
-    [XmlElement("Relation")]
     public RelationEnum Relation
     {
         get { return relation; }

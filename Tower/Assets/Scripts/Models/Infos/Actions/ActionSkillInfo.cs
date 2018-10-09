@@ -1,14 +1,15 @@
-﻿using System.Xml.Serialization;
+﻿using System;
+using System.Xml.Serialization;
 
 /// <summary>
 /// 技能所触发的行动信息
 /// </summary>
+[Serializable]
 public class ActionSkillInfo : ActionInfo
 {
     /// <summary>
     /// 技能的索引位
     /// </summary>
-    [XmlElement("SkillIndex")]
     public int SkillIndex
     {
         get { return skillIndex; }
@@ -19,7 +20,6 @@ public class ActionSkillInfo : ActionInfo
     /// <summary>
     /// 主目标的单位类型
     /// </summary>
-    [XmlElement("MainTargetUnitType")]
     public ActionUnitTypeEnum MainTargetUnitType
     {
         get { return mainTargetUnitType; }
@@ -30,7 +30,6 @@ public class ActionSkillInfo : ActionInfo
     /// <summary>
     /// 主目标位置
     /// </summary>
-    [XmlElement("MainTargetIndex")]
     public int MainTargetIndex
     {
         get { return mainTargetIndex; }

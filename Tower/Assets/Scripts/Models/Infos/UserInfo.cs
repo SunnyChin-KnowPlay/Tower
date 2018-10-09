@@ -7,7 +7,6 @@ public class UserInfo : BaseInfo
     /// <summary>
     /// 用户唯一ID
     /// </summary>
-    [XmlElement("Uuid")]
     public Guid Uuid
     {
         get { return uuid; }
@@ -18,7 +17,6 @@ public class UserInfo : BaseInfo
     /// <summary>
     /// 用户的名字
     /// </summary>
-    [XmlElement("Name")]
     public string Name
     {
         get { return name; }
@@ -29,7 +27,6 @@ public class UserInfo : BaseInfo
     /// <summary>
     /// 基础资源信息
     /// </summary>
-    [XmlElement("Resources")]
     public ResourcesInfo ResourcesInfo
     {
         get { return resourcesInfo; }

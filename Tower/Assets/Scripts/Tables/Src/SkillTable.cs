@@ -50,62 +50,6 @@ namespace DreamEngine.Table
 				return m_Name;
 			}
 		}
-		private int m_HpChanged;
-		/// <summary>
-		/// 血量基本变化值，如果是伤害则是-值加血则是正值0则不动。
-		/// </summary>
-		public int HpChanged
-		{
-			get
-			{
-				return m_HpChanged;
-			}
-		}
-		public class TargetBuffChanged
-		{
-			public void InParse(string src)
-			{
-				var paramValue = src.Split('|');
-
-				Parse(paramValue[0],ref m_Id);
-				Parse(paramValue[1],ref m_Count);
-			}
-
-		 
-			private int m_Id;
-			/// <summary>
-			/// 改变的buff的ID
-			/// </summary>
-			public int Id 
-			{
-				get
-				{
-					return m_Id;
-				}
-			}
-		 
-			private int m_Count;
-			/// <summary>
-			/// 改变的数量正值为加N层负值则代表消N层
-			/// </summary>
-			public int Count 
-			{
-				get
-				{
-					return m_Count;
-				}
-			}
-		}
-
-		private List<TargetBuffChanged> m_TargetBuffChangedList = new List<TargetBuffChanged>();	
-		public List<TargetBuffChanged> TargetBuffChangedList
-		{
-			get
-			{
-				return m_TargetBuffChangedList;
-			}
-		}
-
 		public class UpgradeCondition
 		{
 			public void InParse(string src)
@@ -175,17 +119,64 @@ namespace DreamEngine.Table
 				return m_UpgradeSkillId;
 			}
 		}
-		private uint m_Targets;
-		/// <summary>
-		/// 目标相对于技能的选取目标查阅行动目标相关文档
-		/// </summary>
-		public uint Targets
+		public class Trigger
+		{
+			public void InParse(string src)
+			{
+				var paramValue = src.Split('|');
+
+				Parse(paramValue[0],ref m_ActionType);
+				Parse(paramValue[1],ref m_Param1);
+				Parse(paramValue[2],ref m_Targets);
+			}
+
+		 
+			private uint m_ActionType;
+			/// <summary>
+			/// 行为类型，查阅枚举
+			/// </summary>
+			public uint ActionType 
+			{
+				get
+				{
+					return m_ActionType;
+				}
+			}
+		 
+			private int m_Param1;
+			/// <summary>
+			/// 参数1
+			/// </summary>
+			public int Param1 
+			{
+				get
+				{
+					return m_Param1;
+				}
+			}
+		 
+			private uint m_Targets;
+			/// <summary>
+			/// 目标位，相对于技能的选取目标查阅行动目标相关文档
+			/// </summary>
+			public uint Targets 
+			{
+				get
+				{
+					return m_Targets;
+				}
+			}
+		}
+
+		private List<Trigger> m_TriggerList = new List<Trigger>();	
+		public List<Trigger> TriggerList
 		{
 			get
 			{
-				return m_Targets;
+				return m_TriggerList;
 			}
 		}
+
 		private string m_Icon;
 		/// <summary>
 		/// 图标
@@ -206,42 +197,30 @@ namespace DreamEngine.Table
 			Parse(paramList[1], ref m_Energy);
 			Parse(paramList[2], ref m_Nature);
 			Parse(paramList[3], ref m_Name);
-			Parse(paramList[4], ref m_HpChanged);
-			m_TargetBuffChangedList.Clear();
-			var param5List = paramList[5].Split(':');
-            for (int nCount = 0; nCount < 2; nCount++)
+			m_UpgradeConditionList.Clear();
+			var param4List = paramList[4].Split(':');
+            for (int nCount = 0; nCount < 1; nCount++)
             {
-				if(param5List[nCount] == "/")
+				if(param4List[nCount] == "/")
 					continue;
 
-				m_TargetBuffChangedList.Add(new TargetBuffChanged());
-				m_TargetBuffChangedList[nCount].InParse(param5List[nCount]);
+				m_UpgradeConditionList.Add(new UpgradeCondition());
+				m_UpgradeConditionList[nCount].InParse(param4List[nCount]);
             }
-			m_UpgradeConditionList.Clear();
+			Parse(paramList[5], ref m_UpgradeSkillId);
+			m_TriggerList.Clear();
 			var param6List = paramList[6].Split(':');
             for (int nCount = 0; nCount < 1; nCount++)
             {
 				if(param6List[nCount] == "/")
 					continue;
 
-				m_UpgradeConditionList.Add(new UpgradeCondition());
-				m_UpgradeConditionList[nCount].InParse(param6List[nCount]);
+				m_TriggerList.Add(new Trigger());
+				m_TriggerList[nCount].InParse(param6List[nCount]);
             }
-			Parse(paramList[7], ref m_UpgradeSkillId);
-			Parse(paramList[8], ref m_Targets);
-			Parse(paramList[9], ref m_Icon);
+			Parse(paramList[7], ref m_Icon);
 		}
 
-		public TargetBuffChanged TargetBuffChangedFirst
-		{
-			get
-			{
-				if(TargetBuffChangedList.Count <= 0)
-					return null;
-
-				return TargetBuffChangedList[0];
-			}
-		}
 		public UpgradeCondition UpgradeConditionFirst
 		{
 			get
@@ -250,6 +229,16 @@ namespace DreamEngine.Table
 					return null;
 
 				return UpgradeConditionList[0];
+			}
+		}
+		public Trigger TriggerFirst
+		{
+			get
+			{
+				if(TriggerList.Count <= 0)
+					return null;
+
+				return TriggerList[0];
 			}
 		}
 	}

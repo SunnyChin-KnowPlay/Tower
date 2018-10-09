@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StartupManager : MonoBehaviour
 {
@@ -9,8 +7,6 @@ public class StartupManager : MonoBehaviour
     private void Awake()
     {
         uiManager = UIManager.Instance;
-
-
     }
 
     // Use this for initialization

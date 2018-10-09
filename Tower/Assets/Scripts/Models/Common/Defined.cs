@@ -19,6 +19,7 @@ public enum ActionUnitTypeEnum
 /// </summary>
 public enum ActionTypeEnum
 {
+    None = 0,
     /// <summary>
     /// 技能
     /// </summary>
@@ -38,6 +39,7 @@ public enum ActionTypeEnum
 /// </summary>
 public enum ActionTargetEnum : uint
 {
+    None = 0,
     Self = 1 << 1,
     Left1 = 1 << 2,
     Left2 = 1 << 3,
@@ -63,6 +65,7 @@ public enum ActionTargetEnum : uint
 /// </summary>
 public enum BuffTriggerMomentEnum : uint
 {
+    None = 0,
     /// <summary>
     /// 回合开始
     /// </summary>
@@ -74,10 +77,11 @@ public enum BuffTriggerMomentEnum : uint
 }
 
 /// <summary>
-/// Buff触发器行动类型枚举
+/// 触发器行动类型枚举
 /// </summary>
-public enum BuffTriggerActionTypeEnum : uint
+public enum TriggerActionTypeEnum : uint
 {
+    None = 0,
     /// <summary>
     /// 血量变化 正值为加血 负值为减血
     /// </summary>
@@ -94,5 +98,5 @@ public enum BuffTriggerActionTypeEnum : uint
     /// 清除所有层数的Buff，参数1为BuffID，参数2为目标位枚举@ActionTargetEnum 相对于Buff的所有人
     /// </summary>
     ClearBuff = 1 << 4,
-
 }
+

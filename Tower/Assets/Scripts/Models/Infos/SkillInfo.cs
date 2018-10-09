@@ -6,7 +6,6 @@ public class SkillInfo : BaseInfo
     /// <summary>
     /// 索引位
     /// </summary>
-    [XmlElement("Index")]
     public int Index
     {
         get { return index; }
@@ -17,7 +16,6 @@ public class SkillInfo : BaseInfo
     /// <summary>
     /// 配表ID
     /// </summary>
-    [XmlElement("ConfId")]
     public int ConfId
     {
         get { return confId; }

@@ -1,6 +1,8 @@
 ﻿using DreamEngine.Table;
+using System;
 using System.Xml.Serialization;
 
+[Serializable]
 public class BuffInfo : BaseInfo
 {
     /// <summary>
@@ -8,6 +10,7 @@ public class BuffInfo : BaseInfo
     /// </summary>
     public enum BuffTypeEnum
     {
+        None = 0,
         Buff = 1,
         Debuff = 2,
     }

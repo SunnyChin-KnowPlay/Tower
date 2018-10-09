@@ -1,20 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 /// <summary>
 /// 行动效果信息
 /// </summary>
+[Serializable]
 public class ActionEffectInfo : BaseInfo
 {
-    /// <summary>
-    /// 行动的信息
-    /// </summary>
-    public ActionInfo ActionInfo
-    {
-        get { return actionInfo; }
-        set { actionInfo = value; }
-    }
-    protected ActionInfo actionInfo = null;
-
     /// <summary>
     /// 行动目标类型
     /// </summary>
@@ -46,43 +37,18 @@ public class ActionEffectInfo : BaseInfo
     protected int hpChanged = 0;
 
     /// <summary>
-    /// 获取Buff的改变列表
+    /// 获取Buff的信息
     /// </summary>
-    public BuffInfo[] BuffChangeds
+    public BuffInfo BuffInfo
     {
-        get
-        {
-            if (null == buffChangeds)
-                return null;
-            return buffChangeds.ToArray();
-        }
-        set
-        {
-            if (null == buffChangeds)
-                return;
-
-            buffChangeds.Clear();
-            buffChangeds.AddRange(value);
-        }
+        get { return buffInfo; }
+        set { buffInfo = value; }
     }
-    protected List<BuffInfo> buffChangeds = null;
-
-    /// <summary>
-    /// 放入Buff的改变队列
-    /// </summary>
-    /// <param name="list"></param>
-    public void PutBuffChangeds(BuffInfo[] list)
-    {
-        if (null == buffChangeds)
-            return;
-
-        buffChangeds.Clear();
-        buffChangeds.AddRange(list);
-    }
+    protected BuffInfo buffInfo = null;
 
     public ActionEffectInfo()
     {
-        buffChangeds = new List<BuffInfo>();
+
     }
 }
 
