@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml.Serialization;
 
 /// <summary>
 /// Buff所触发的行动信息
