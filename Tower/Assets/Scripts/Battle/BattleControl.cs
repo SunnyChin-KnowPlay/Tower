@@ -1,43 +1,62 @@
 ﻿using Dream.Extension.Unity;
+using Dream.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleControl : MonoBehaviour
 {
+    private static string gameObjectName = null;
+    /// <summary>
+    /// 游戏对象名
+    /// </summary>
+    public static string GameObjectName
+    {
+        get { return gameObjectName; }
+    }
+
     private BattleModel battleModel = null;
+
+    /// <summary>
+    /// 单位工厂
+    /// </summary>
+    private BattleUnitFactory unitFactory = null;
 
     /// <summary>
     /// 角色的词典
     /// </summary>
-    private Dictionary<int, PlayerControl> players = null;
+    private Dictionary<int, BattleUnitControl> units = null;
 
     /// <summary>
-    /// 战场格子的词典 1~12 其中1-10是给角色保留的位置 11和12则是代表着水晶的
+    /// 战场格子的词典
     /// </summary>
-    private Dictionary<int, BattleGridBehaviour> grids = null;
+    private Dictionary<BattleGridPositionEnum, BattleGridBehaviour> grids = null;
 
     public Transform gridsTransform = null;
 
     private void Awake()
     {
+        gameObjectName = this.gameObject.name;
+
         battleModel = BattleModel.Instance;
 
-        players = new Dictionary<int, PlayerControl>();
-        grids = new Dictionary<int, BattleGridBehaviour>();
+        unitFactory = this.FindComponentInScene<BattleUnitFactory>("UnitFactory");
+
+        units = new Dictionary<int, BattleUnitControl>();
+        grids = new Dictionary<BattleGridPositionEnum, BattleGridBehaviour>();
     }
 
     private void OnEnable()
     {
         this.SetupGrids();
 
-        this.LoadPlayers();
+        this.LoadUnits();
     }
 
     // Use this for initialization
     void Start()
     {
-
+        SetupUnits();
     }
 
     // Update is called once per frame
@@ -48,25 +67,31 @@ public class BattleControl : MonoBehaviour
 
     #region Setup & Loads
     /// <summary>
-    /// 加载角色
+    /// 加载单位
     /// </summary>
-    private void LoadPlayers()
+    private void LoadUnits()
     {
-        PlayerControl control = null;
-        foreach (var pInfo in battleModel.GetAllPlayers())
+        BattleUnitControl control = null;
+        foreach (var pInfo in battleModel.GetAllUnits())
         {
-            control = this.LoadPlayer(pInfo);
+            control = this.LoadUnit(pInfo);
             if (null != control)
             {
-                players.Add(control.PlayerInfo.Index, control);
-                control.Place();
+                units.Add(control.UnitInfo.Index, control);
             }
+        }
+    }
+
+    private void SetupUnits()
+    {
+        foreach (var kvp in units)
+        {
+            kvp.Value.MoveToOrigin();
         }
     }
 
     /// <summary>
     /// 配置格子
-    /// 其中 所有格子的位置都是从1开始的 位置0保留作其他用
     /// </summary>
     private void SetupGrids()
     {
@@ -80,16 +105,57 @@ public class BattleControl : MonoBehaviour
                 if (null == gridBehaviour)
                     continue;
 
-                // 这里之所以要+1 是让位置的ID从1开始而非0
-                gridBehaviour.Position = i + 1;
+                gridBehaviour.Position = this.GetGridPositionFromName(t.gameObject.name);
                 this.grids.Add(gridBehaviour.Position, gridBehaviour);
             }
         }
     }
 
-    private PlayerControl LoadPlayer(PlayerInfo info)
+    /// <summary>
+    /// 通过名字来获取格子位置的枚举
+    /// 首先计算2个base基地，然后判定名字中是否含有Grid_1 取最后的字符串
+    /// </summary>
+    /// <param name="name">格子对象的节点名字</param>
+    /// <returns></returns>
+    private BattleGridPositionEnum GetGridPositionFromName(string name)
     {
-        return PlayerFactory.Instance.LoadPlayer(info);
+        if (string.IsNullOrEmpty(name))
+            return BattleGridPositionEnum.None;
+
+        if (name == "Grid_1_Base")
+            return BattleGridPositionEnum.Home_Base;
+        if (name == "Grid_2_Base")
+            return BattleGridPositionEnum.Away_Base;
+        if (name.Contains("Grid_1_"))
+        {
+            var subString = name.Substring(name.LastIndexOf('_') + 1);
+            uint number = 0;
+
+            if (!uint.TryParse(subString, out number))
+            {
+                return BattleGridPositionEnum.None;
+            }
+
+            return BattleGridPositionEnum.Home_Player_Start + number - 1;
+        }
+        if (name.Contains("Grid_2_"))
+        {
+            var subString = name.Substring(name.LastIndexOf('_') + 1);
+            uint number = 0;
+
+            if (!uint.TryParse(subString, out number))
+            {
+                return BattleGridPositionEnum.None;
+            }
+
+            return BattleGridPositionEnum.Away_Player_Start + number - 1;
+        }
+        return BattleGridPositionEnum.None;
+    }
+
+    private BattleUnitControl LoadUnit(BattleUnitInfo info)
+    {
+        return unitFactory.LoadUnit(info);
     }
     #endregion
 
@@ -99,7 +165,7 @@ public class BattleControl : MonoBehaviour
     /// </summary>
     /// <param name="position">位置索引号</param>
     /// <returns></returns>
-    public BattleGridBehaviour GetGrid(int position)
+    public BattleGridBehaviour GetGrid(BattleGridPositionEnum position)
     {
         if (this.grids.ContainsKey(position))
         {

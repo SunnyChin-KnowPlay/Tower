@@ -49,15 +49,112 @@ public enum ActionTargetEnum : uint
     Right2 = 1 << 7,
     Right3 = 1 << 8,
     Right4 = 1 << 9,
-    Away = 1 << 10,
-    AwayLeft1 = 1 << 11,
-    AwayLeft2 = 1 << 12,
-    AwayLeft3 = 1 << 13,
-    AwayLeft4 = 1 << 14,
-    AwayRight1 = 1 << 15,
-    AwayRight2 = 1 << 16,
-    AwayRight3 = 1 << 17,
-    AwayRight4 = 1 << 18,
+    FrontOrBack = 1 << 10,
+    FrontOrBackLeft1 = 1 << 11,
+    FrontOrBackLeft2 = 1 << 12,
+    FrontOrBackLeft3 = 1 << 13,
+    FrontOrBackLeft4 = 1 << 14,
+    FrontOrBackRight1 = 1 << 15,
+    FrontOrBackRight2 = 1 << 16,
+    FrontOrBackRight3 = 1 << 17,
+    FrontOrBackRight4 = 1 << 18,
+}
+
+public enum BattleGridPositionEnum : uint
+{
+    None = 0,
+    /// <summary>
+    /// 我方基地，放水晶用的
+    /// </summary>
+    Home_Base = 1,
+    /// <summary>
+    /// 我方角色
+    /// </summary>
+    Home_Player_Start = 2,
+    Home_1 = 2,
+    Home_2 = 3,
+    Home_3 = 4,
+    Home_4 = 5,
+    Home_5 = 6,
+    Home_6 = 7,
+    Home_7 = 8,
+    Home_8 = 9,
+    Home_9 = 10,
+    Home_10 = 11,
+    Home_Player_Ended = 11,
+
+    /// <summary>
+    /// 对方基地
+    /// </summary>
+    Away_Base = 12,
+    /// <summary>
+    /// 对方角色
+    /// </summary>
+    Away_Player_Start = 13,
+    Away_1 = 13,
+    Away_2 = 14,
+    Away_3 = 15,
+    Away_4 = 16,
+    Away_5 = 17,
+    Away_6 = 18,
+    Away_7 = 19,
+    Away_8 = 20,
+    Away_9 = 21,
+    Away_10 = 22,
+    Away_Player_Ended = 22,
+
+}
+
+/// <summary>
+/// 战斗单位关系枚举
+/// </summary>
+public enum BattleUnitRelationEnum : int
+{
+    None = 0,
+    /// <summary>
+    /// 自己
+    /// </summary>
+    Self = 1,
+    /// <summary>
+    /// 角色自己的仆从
+    /// </summary>
+    SelfMinion = 2,
+    /// <summary>
+    /// 友方角色
+    /// </summary>
+    Friend = 4,
+    /// <summary>
+    /// 友方仆从
+    /// </summary>
+    FriendMinion = 8,
+    /// <summary>
+    /// 对方
+    /// </summary>
+    Opponent = 16,
+    /// <summary>
+    /// 对方仆从
+    /// </summary>
+    OpponentMinion = 32,
+}
+
+/// <summary>
+/// 战场单位类型枚举
+/// </summary>
+public enum BattleUnitTypeEnum : int
+{
+    None = 0,
+    /// <summary>
+    /// 人物角色
+    /// </summary>
+    Player = 1,
+    /// <summary>
+    /// 仆从
+    /// </summary>
+    Minion = 2,
+    /// <summary>
+    /// 基地水晶
+    /// </summary>
+    Diamond = 4,
 }
 
 /// <summary>

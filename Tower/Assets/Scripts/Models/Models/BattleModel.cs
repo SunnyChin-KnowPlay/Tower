@@ -10,9 +10,14 @@ public class BattleModel : BaseModel
     public const string Key = "Battle";
 
     /// <summary>
-    /// 所有角色的词典
+    /// 所有单位的词典
     /// </summary>
-    private Dictionary<int, PlayerInfo> allPlayers = null;
+    private Dictionary<int, BattleUnitInfo> allUnits = null;
+
+    public Dictionary<int, BattleUnitInfo> AllUnits
+    {
+        get { return allUnits; }
+    }
 
     /// <summary>
     /// 当前回合需要执行的行动队列
@@ -21,7 +26,7 @@ public class BattleModel : BaseModel
 
     public BattleModel()
     {
-        allPlayers = new Dictionary<int, PlayerInfo>();
+        allUnits = new Dictionary<int, BattleUnitInfo>();
         currentActions = new List<ActionInfo>();
     }
 
@@ -31,9 +36,9 @@ public class BattleModel : BaseModel
     }
 
     #region Get
-    public Dictionary<int, PlayerInfo>.ValueCollection GetAllPlayers()
+    public Dictionary<int, BattleUnitInfo>.ValueCollection GetAllUnits()
     {
-        return allPlayers.Values;
+        return allUnits.Values;
     }
 
     /// <summary>
@@ -41,10 +46,10 @@ public class BattleModel : BaseModel
     /// </summary>
     /// <param name="relation">你想要的数组</param>
     /// <returns></returns>
-    public PlayerInfo[] GetPlayers(PlayerInfo.RelationEnum relation)
+    public BattleUnitInfo[] GetUnits(BattleUnitRelationEnum relation)
     {
-        List<PlayerInfo> list = new List<PlayerInfo>();
-        foreach (var p in GetAllPlayers())
+        List<BattleUnitInfo> list = new List<BattleUnitInfo>();
+        foreach (var p in GetAllUnits())
         {
             if ((p.Relation & relation) == relation)
                 list.Add(p);
@@ -53,27 +58,48 @@ public class BattleModel : BaseModel
         return list.ToArray();
     }
 
-    public PlayerInfo GetSelfPlayer()
+    public BattlePlayerInfo GetSelfPlayer()
     {
-        var list = this.GetPlayers(PlayerInfo.RelationEnum.Self);
+        var list = this.GetUnits(BattleUnitRelationEnum.Self);
         if (null != list && list.Length > 0)
-            return list[0];
+            return list[0] as BattlePlayerInfo;
         return null;
     }
 
-    public PlayerInfo[] GetFriendlyPlayers()
+    /// <summary>
+    /// 获取友方人物角色
+    /// </summary>
+    /// <returns></returns>
+    public BattlePlayerInfo[] GetFriendlyPlayers()
     {
-        return GetPlayers(PlayerInfo.RelationEnum.Friendly);
+        return (BattlePlayerInfo[])GetUnits(BattleUnitRelationEnum.Friend);
     }
 
-    public PlayerInfo[] GetFriendlyAndSelfPlayers()
+    /// <summary>
+    /// 获取友方和自己人物角色
+    /// </summary>
+    /// <returns></returns>
+    public BattlePlayerInfo[] GetFriendlyAndSelfPlayers()
     {
-        return GetPlayers(PlayerInfo.RelationEnum.Self | PlayerInfo.RelationEnum.Friendly);
+        return (BattlePlayerInfo[])GetUnits(BattleUnitRelationEnum.Self | BattleUnitRelationEnum.Friend);
     }
 
-    public PlayerInfo[] GetOpponentPlayers()
+    /// <summary>
+    /// 获取对方人物角色
+    /// </summary>
+    /// <returns></returns>
+    public BattlePlayerInfo[] GetOpponentPlayers()
     {
-        return GetPlayers(PlayerInfo.RelationEnum.Opponent);
+        return (BattlePlayerInfo[])GetUnits(BattleUnitRelationEnum.Opponent);
+    }
+
+    /// <summary>
+    /// 获取所有角色
+    /// </summary>
+    /// <returns></returns>
+    public BattlePlayerInfo[] GetAllPlayers()
+    {
+        return (BattlePlayerInfo[])GetUnits(BattleUnitRelationEnum.Self | BattleUnitRelationEnum.Friend | BattleUnitRelationEnum.Opponent);
     }
     #endregion
 
@@ -110,7 +136,7 @@ public class BattleModel : BaseModel
 
     public override void Reset()
     {
-        allPlayers.Clear();
+        allUnits.Clear();
 
     }
 }

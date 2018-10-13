@@ -5,46 +5,6 @@ using System.Xml.Serialization;
 public class PlayerInfo : BaseInfo
 {
     /// <summary>
-    /// 角色关系枚举
-    /// </summary>
-    public enum RelationEnum : int
-    {
-        None = 0,
-        /// <summary>
-        /// 自己
-        /// </summary>
-        Self = 1,
-        /// <summary>
-        /// 友方
-        /// </summary>
-        Friendly = 2,
-        /// <summary>
-        /// 对方
-        /// </summary>
-        Opponent = 4,
-    }
-
-    /// <summary>
-    /// 索引位 1-10
-    /// </summary>
-    public int Index
-    {
-        get { return index; }
-        set { index = value; }
-    }
-    protected int index = 0;
-
-    /// <summary>
-    /// 战场上的位置 1-10
-    /// </summary>
-    public int Position
-    {
-        get { return position; }
-        set { position = value; }
-    }
-    protected int position = 0;
-
-    /// <summary>
     /// 角色唯一ID
     /// </summary>
     public Guid Uid
@@ -54,72 +14,5 @@ public class PlayerInfo : BaseInfo
     }
     protected Guid uid = Guid.Empty;
 
-    /// <summary>
-    /// 角色的名字
-    /// </summary>
-    public string Name
-    {
-        get { return name; }
-        set { name = value; }
-    }
-    protected string name = null;
 
-    /// <summary>
-    /// 血量的上限
-    /// </summary>
-    public int HpMax
-    {
-        get { return hpMax; }
-        set { hpMax = value; }
-    }
-    protected int hpMax = 0;
-
-    /// <summary>
-    /// 角色的血量
-    /// </summary>
-    public int Hp
-    {
-        get { return hp; }
-        set { hp = value; }
-    }
-    protected int hp = 0;
-
-    /// <summary>
-    /// 与玩家控制的角色的关系
-    /// </summary>
-    public RelationEnum Relation
-    {
-        get { return relation; }
-        set { relation = value; }
-    }
-    protected RelationEnum relation = RelationEnum.None;
-
-    /// <summary>
-    /// 技能队列
-    /// </summary>
-    public SkillInfo[] Skills
-    {
-        get { return skills.ToArray(); }
-        set
-        {
-            skills.Clear();
-            skills.AddRange(value);
-        }
-    }
-    protected List<SkillInfo> skills = null;
-
-    /// <summary>
-    /// Buff队列
-    /// </summary>
-    public List<BuffInfo> Buffs
-    {
-        get { return buffs; }
-    }
-    protected List<BuffInfo> buffs = null;
-
-    public PlayerInfo()
-    {
-        skills = new List<SkillInfo>();
-        buffs = new List<BuffInfo>();
-    }
 }

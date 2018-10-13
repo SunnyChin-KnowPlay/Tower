@@ -111,12 +111,35 @@ public class UIMain : UIPanel
         if (null == obj)
             return;
 
+        GameObject go = null;
+        UISystemButton systemButton = null;
+        Sprite iconSprite = null;
+
+        go = GameObject.Instantiate(obj) as GameObject;
+        // 这个函数是一个扩展函数，他的意思是，如果这个对象身上已经有这个脚本了，就会直接获取到，如果没有的话，则先添加并获取该脚本
+        systemButton = go.GetComponentOrAdd<UISystemButton>();
+        if (null != systemButton)
+        {
+            iconSprite = Resources.Load<Sprite>("UI/GemsIcons/01");
+            systemButton.Setup(iconSprite, "开始");
+            systemButton.IconButton.onClick.AddListener(OnClickStart);
+            systemButtonGrid.transform.AddChild(systemButton.transform);
+        }
+
        
 
     }
     #endregion
 
     #region UI Events
-   
+    private void OnClickStart()
+    {
+        var taskPanel = uiManager.LoadPanel<UIStartMatch>(UIStartMatch.Key);
+        if (null != taskPanel)
+        {
+            uiManager.Push(taskPanel);
+        }
+        UnityEngine.Debug.Log("OnClickStart");
+    }
     #endregion
 }

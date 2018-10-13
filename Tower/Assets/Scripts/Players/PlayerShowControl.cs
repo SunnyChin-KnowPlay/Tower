@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimControl : MonoBehaviour, IPlayerControl
+public class PlayerShowControl : MonoBehaviour, IPlayerControl
 {
     private Animator animator = null;
 
