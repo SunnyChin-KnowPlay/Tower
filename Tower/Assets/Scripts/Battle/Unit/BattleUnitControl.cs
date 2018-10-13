@@ -1,7 +1,5 @@
 ﻿using Dream.Extension.Unity;
 using Dream.Utilities;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleUnitControl : MonoBehaviour, IBattleUnitControl
