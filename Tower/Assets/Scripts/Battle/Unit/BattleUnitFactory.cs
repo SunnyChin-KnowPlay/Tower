@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class BattleUnitFactory : MonoBehaviour
 {
+    public static string GameObjectKey = null;
+
+    private void Awake()
+    {
+        GameObjectKey = this.gameObject.name;
+    }
 
     // Use this for initialization
     void Start()

@@ -40,7 +40,7 @@ public class BattleControl : MonoBehaviour
 
         battleModel = BattleModel.Instance;
 
-        unitFactory = this.FindComponentInScene<BattleUnitFactory>("UnitFactory");
+        unitFactory = this.FindComponentInScene<BattleUnitFactory>(BattleUnitFactory.GameObjectKey);
 
         units = new Dictionary<int, BattleUnitControl>();
         grids = new Dictionary<BattleGridPositionEnum, BattleGridBehaviour>();

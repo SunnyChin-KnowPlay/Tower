@@ -62,6 +62,32 @@ public class UIStartMatch : UIPanel
             bm.AllUnits.Add(info.Index, info);
         }
 
+        for (int i = 0; i < 5; i++)
+        {
+            info = new BattleMinionInfo();
+            info.Hp = 100;
+            info.HpMax = 100;
+            info.Index = i + 1 + 10;
+            info.Position = BattleGridPositionEnum.Home_Player_Start + (uint)(i + 5);
+            info.UnitType = BattleUnitTypeEnum.Minion;
+            info.RowId = (i % 3) + 1;
+            info.Name = "呵呵";
+            bm.AllUnits.Add(info.Index, info);
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            info = new BattleMinionInfo();
+            info.Hp = 100;
+            info.HpMax = 100;
+            info.Index = i + 1 + 15;
+            info.Position = BattleGridPositionEnum.Away_Player_Start + (uint)(i + 5);
+            info.UnitType = BattleUnitTypeEnum.Minion;
+            info.RowId = (i % 3) + 1;
+            info.Name = "呵呵";
+            bm.AllUnits.Add(info.Index, info);
+        }
+
         UnityEngine.SceneManagement.SceneManager.LoadScene("NormalBattle");
 
     }

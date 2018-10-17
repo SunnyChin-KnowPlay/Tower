@@ -182,18 +182,22 @@ public enum TriggerActionTypeEnum : uint
     /// <summary>
     /// 血量变化 正值为加血 负值为减血
     /// </summary>
-    HpChanged = 1 << 1,
+    HpChanged = 1,
     /// <summary>
     /// 叠加一层Buff，参数1为BuffID，参数2为目标位枚举@ActionTargetEnum 相对于Buff的所有人
     /// </summary>
-    AddBuff = 1 << 2,
+    AddBuff = 2,
     /// <summary>
     /// 移除一层Buff，参数1为BuffID，参数2为目标位枚举@ActionTargetEnum 相对于Buff的所有人
     /// </summary>
-    RemoveBuff = 1 << 3,
+    RemoveBuff = 3,
     /// <summary>
     /// 清除所有层数的Buff，参数1为BuffID，参数2为目标位枚举@ActionTargetEnum 相对于Buff的所有人
     /// </summary>
-    ClearBuff = 1 << 4,
+    ClearBuff = 4,
+    /// <summary>
+    /// 清除所有层数的所有BUFF，参数1无效，参数2位目标位枚举@ActionTargetEnum 相对于Buff的所有人
+    /// </summary>
+    ClearAllBuff = 5,
 }
 

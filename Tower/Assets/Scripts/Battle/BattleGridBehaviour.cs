@@ -2,7 +2,6 @@
 
 public class BattleGridBehaviour : MonoBehaviour
 {
-
     /// <summary>
     /// 自身的位置
     /// </summary>

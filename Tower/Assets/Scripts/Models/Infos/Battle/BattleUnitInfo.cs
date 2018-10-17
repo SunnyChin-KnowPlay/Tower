@@ -67,7 +67,7 @@ public class BattleUnitInfo : BaseInfo
     protected int hpMax = 0;
 
     /// <summary>
-    /// 角色的血量
+    /// 血量
     /// </summary>
     public int Hp
     {
@@ -75,6 +75,16 @@ public class BattleUnitInfo : BaseInfo
         set { hp = value; }
     }
     protected int hp = 0;
+
+    /// <summary>
+    /// 攻击力
+    /// </summary>
+    public int Attack
+    {
+        get { return attack; }
+        set { attack = value; }
+    }
+    protected int attack = 0;
 
     /// <summary>
     /// 与玩家控制的角色的关系

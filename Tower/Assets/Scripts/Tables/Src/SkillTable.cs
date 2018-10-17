@@ -17,6 +17,17 @@ namespace DreamEngine.Table
 				return m_Id;
 			}
 		}
+		private int m_SkillType;
+		/// <summary>
+		/// 技能大类型
+		/// </summary>
+		public int SkillType
+		{
+			get
+			{
+				return m_SkillType;
+			}
+		}
 		private int m_Energy;
 		/// <summary>
 		/// 消耗的能量
@@ -41,7 +52,7 @@ namespace DreamEngine.Table
 		}
 		private string m_Name;
 		/// <summary>
-		/// 目标名称
+		/// 名称
 		/// </summary>
 		public string Name
 		{
@@ -194,31 +205,32 @@ namespace DreamEngine.Table
 			string[] paramList = row.Split(commaSeparator);
 
 			Parse(paramList[0], ref m_Id);
-			Parse(paramList[1], ref m_Energy);
-			Parse(paramList[2], ref m_Nature);
-			Parse(paramList[3], ref m_Name);
+			Parse(paramList[1], ref m_SkillType);
+			Parse(paramList[2], ref m_Energy);
+			Parse(paramList[3], ref m_Nature);
+			Parse(paramList[4], ref m_Name);
 			m_UpgradeConditionList.Clear();
-			var param4List = paramList[4].Split(':');
+			var param5List = paramList[5].Split(':');
             for (int nCount = 0; nCount < 1; nCount++)
             {
-				if(param4List[nCount] == "/")
+				if(param5List[nCount] == "/")
 					continue;
 
 				m_UpgradeConditionList.Add(new UpgradeCondition());
-				m_UpgradeConditionList[nCount].InParse(param4List[nCount]);
+				m_UpgradeConditionList[nCount].InParse(param5List[nCount]);
             }
-			Parse(paramList[5], ref m_UpgradeSkillId);
+			Parse(paramList[6], ref m_UpgradeSkillId);
 			m_TriggerList.Clear();
-			var param6List = paramList[6].Split(':');
+			var param7List = paramList[7].Split(':');
             for (int nCount = 0; nCount < 1; nCount++)
             {
-				if(param6List[nCount] == "/")
+				if(param7List[nCount] == "/")
 					continue;
 
 				m_TriggerList.Add(new Trigger());
-				m_TriggerList[nCount].InParse(param6List[nCount]);
+				m_TriggerList[nCount].InParse(param7List[nCount]);
             }
-			Parse(paramList[7], ref m_Icon);
+			Parse(paramList[8], ref m_Icon);
 		}
 
 		public UpgradeCondition UpgradeConditionFirst
