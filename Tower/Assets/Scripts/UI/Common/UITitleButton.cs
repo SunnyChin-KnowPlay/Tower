@@ -1,22 +1,27 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class UISystemButton : MonoBehaviour
+/// <summary>
+/// 带标题的按钮，标题置于下方
+/// </summary>
+public class UITitleButton : MonoBehaviour
 {
+    public const string Path = "UI/Prefabs/Common/TitleButton";
+
     /// <summary>
     /// 图标
     /// </summary>
-    private Image iconImage;
+    protected Image iconImage;
 
     /// <summary>
     /// 标题文本
     /// </summary>
-    private Text titleText;
+    protected Text titleText;
 
     /// <summary>
     /// 按钮脚本
     /// </summary>
-    private Button iconButton;
+    protected Button iconButton;
 
     /// <summary>
     /// 按钮脚本属性
@@ -38,7 +43,7 @@ public class UISystemButton : MonoBehaviour
 
     }
 
-    public void Setup(Sprite iconSprite, string title)
+    public virtual void Setup(Sprite iconSprite, string title)
     {
         if (null != iconImage)
         {
