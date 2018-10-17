@@ -40,9 +40,8 @@ GameObject:
   - component: {fileID: 222511115158104884}
   - component: {fileID: 114271045379594332}
   - component: {fileID: 114774280082431200}
-  - component: {fileID: 114342746061846978}
   m_Layer: 5
-  m_Name: SystemButton
+  m_Name: TitleButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,17 +88,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114342746061846978
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1890931195110738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 830c06abfa4ccc4409d804b617b6326b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114774280082431200
 MonoBehaviour:
   m_ObjectHideFlags: 1
