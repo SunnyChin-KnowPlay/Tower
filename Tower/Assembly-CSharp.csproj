@@ -118,9 +118,12 @@
     <Compile Include="Assets\Scripts\UI\Bases\IUIPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Bases\UIPanel.cs" />
     <Compile Include="Assets\Scripts\UI\Battle\UIBattle.cs" />
+    <Compile Include="Assets\Scripts\UI\Battle\UIPlayerOperatePanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Battle\UISkillButton.cs" />
     <Compile Include="Assets\Scripts\UI\Common\UICoverTouchPanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\UIRepeatButton.cs" />
     <Compile Include="Assets\Scripts\UI\Common\UIResourceNode.cs" />
-    <Compile Include="Assets\Scripts\UI\Common\UISystemButton.cs" />
+    <Compile Include="Assets\Scripts\UI\Common\UITitleButton.cs" />
     <Compile Include="Assets\Scripts\UI\Defineds\UIDefined.cs" />
     <Compile Include="Assets\Scripts\UI\Home\UIStartMatch.cs" />
     <Compile Include="Assets\Scripts\UI\Management\UIManager.cs" />

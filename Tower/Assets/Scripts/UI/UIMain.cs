@@ -106,18 +106,18 @@ public class UIMain : UIPanel
         if (null == systemButtonGrid)
             return;
 
-        var obj = Resources.Load("UI/Prefabs/Common/SystemButton");
+        var obj = Resources.Load(UITitleButton.Path);
 
         if (null == obj)
             return;
 
         GameObject go = null;
-        UISystemButton systemButton = null;
+        UITitleButton systemButton = null;
         Sprite iconSprite = null;
 
         go = GameObject.Instantiate(obj) as GameObject;
         // 这个函数是一个扩展函数，他的意思是，如果这个对象身上已经有这个脚本了，就会直接获取到，如果没有的话，则先添加并获取该脚本
-        systemButton = go.GetComponentOrAdd<UISystemButton>();
+        systemButton = go.GetComponentOrAdd<UITitleButton>();
         if (null != systemButton)
         {
             iconSprite = Resources.Load<Sprite>("UI/GemsIcons/01");
@@ -126,7 +126,7 @@ public class UIMain : UIPanel
             systemButtonGrid.transform.AddChild(systemButton.transform);
         }
 
-       
+
 
     }
     #endregion
