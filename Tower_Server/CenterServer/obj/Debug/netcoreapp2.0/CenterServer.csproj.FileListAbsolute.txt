@@ -1,0 +1,16 @@
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\bin\Debug\netcoreapp2.0\CenterServer.deps.json
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\bin\Debug\netcoreapp2.0\CenterServer.runtimeconfig.json
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\bin\Debug\netcoreapp2.0\CenterServer.runtimeconfig.dev.json
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\bin\Debug\netcoreapp2.0\CenterServer.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\bin\Debug\netcoreapp2.0\CenterServer.pdb
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\bin\Debug\netcoreapp2.0\CoreFramework.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\bin\Debug\netcoreapp2.0\DreamEngine.Net.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\bin\Debug\netcoreapp2.0\DreamEngine.Utilities.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\bin\Debug\netcoreapp2.0\CoreFramework.pdb
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\obj\Debug\netcoreapp2.0\CenterServer.csprojAssemblyReference.cache
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\obj\Debug\netcoreapp2.0\CenterServer.csproj.CoreCompileInputs.cache
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\obj\Debug\netcoreapp2.0\CenterServer.AssemblyInfoInputs.cache
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\obj\Debug\netcoreapp2.0\CenterServer.AssemblyInfo.cs
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\obj\Debug\netcoreapp2.0\CenterServer.csproj.CopyComplete
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\obj\Debug\netcoreapp2.0\CenterServer.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CenterServer\obj\Debug\netcoreapp2.0\CenterServer.pdb

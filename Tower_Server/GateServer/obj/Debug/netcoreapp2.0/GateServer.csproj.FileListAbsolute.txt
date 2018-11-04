@@ -8,3 +8,9 @@ C:\Users\sunny\Projects\Tower\Tower_Server\GateServer\obj\Debug\netcoreapp2.0\Ga
 C:\Users\sunny\Projects\Tower\Tower_Server\GateServer\obj\Debug\netcoreapp2.0\GateServer.AssemblyInfo.cs
 C:\Users\sunny\Projects\Tower\Tower_Server\GateServer\obj\Debug\netcoreapp2.0\GateServer.dll
 C:\Users\sunny\Projects\Tower\Tower_Server\GateServer\obj\Debug\netcoreapp2.0\GateServer.pdb
+C:\Users\sunny\Projects\Tower\Tower_Server\GateServer\bin\Debug\netcoreapp2.0\CoreFramework.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\GateServer\bin\Debug\netcoreapp2.0\CoreFramework.pdb
+C:\Users\sunny\Projects\Tower\Tower_Server\GateServer\obj\Debug\netcoreapp2.0\GateServer.csprojAssemblyReference.cache
+C:\Users\sunny\Projects\Tower\Tower_Server\GateServer\obj\Debug\netcoreapp2.0\GateServer.csproj.CopyComplete
+C:\Users\sunny\Projects\Tower\Tower_Server\GateServer\bin\Debug\netcoreapp2.0\DreamEngine.Net.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\GateServer\bin\Debug\netcoreapp2.0\DreamEngine.Utilities.dll

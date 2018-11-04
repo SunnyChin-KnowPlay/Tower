@@ -5,4 +5,17 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CoreFramework\CoreFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DreamEngine.Net">
+      <HintPath>..\Library\DreamAssemblies\DreamEngine.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DreamEngine.Utilities">
+      <HintPath>..\Library\DreamAssemblies\DreamEngine.Utilities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

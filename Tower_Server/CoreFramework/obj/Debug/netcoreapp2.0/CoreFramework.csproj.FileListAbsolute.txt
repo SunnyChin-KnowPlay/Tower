@@ -1,0 +1,17 @@
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\obj\Debug\netcoreapp2.0\CoreFramework.csproj.CoreCompileInputs.cache
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\obj\Debug\netcoreapp2.0\CoreFramework.AssemblyInfoInputs.cache
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\obj\Debug\netcoreapp2.0\CoreFramework.AssemblyInfo.cs
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\bin\Debug\netcoreapp2.0\CoreFramework.deps.json
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\bin\Debug\netcoreapp2.0\CoreFramework.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\bin\Debug\netcoreapp2.0\CoreFramework.pdb
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\obj\Debug\netcoreapp2.0\CoreFramework.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\obj\Debug\netcoreapp2.0\CoreFramework.pdb
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\bin\Debug\netcoreapp2.0\DreamEditor.Net.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\bin\Debug\netcoreapp2.0\DreamEditor.Table.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\bin\Debug\netcoreapp2.0\DreamEngine.Net.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\bin\Debug\netcoreapp2.0\DreamEngine.Security.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\bin\Debug\netcoreapp2.0\DreamEngine.Table.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\bin\Debug\netcoreapp2.0\DreamEngine.Utilities.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\obj\Debug\netcoreapp2.0\CoreFramework.csproj.CopyComplete
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\bin\Debug\netcoreapp2.0\DreamEditor.Utilities.dll
+C:\Users\sunny\Projects\Tower\Tower_Server\CoreFramework\obj\Debug\netcoreapp2.0\CoreFramework.csprojAssemblyReference.cache
