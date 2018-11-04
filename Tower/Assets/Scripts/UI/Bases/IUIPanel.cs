@@ -21,7 +21,7 @@ public interface IUIPanel
     /// </summary>
     /// <returns></returns>
     bool GetIsCommon();
-    // coverTouchPanel.transform.SetSiblingIndex(UIDefined.CoverTouchSiblingIndex);
+
     /// <summary>
     /// 设置渲染索引
     /// </summary>

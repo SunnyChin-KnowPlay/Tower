@@ -72,6 +72,7 @@ namespace DreamEngine.Net.Protocols.Common
 
 		protected override byte[] EncodePlaceholder()
         {
+			bitcodes.SetAll(false);
             this.ConvertPlaceholder(bitcodes, placeholder);
             return placeholder;
         }
@@ -89,13 +90,6 @@ namespace DreamEngine.Net.Protocols.Common
 
 		public override bool IsVaild()
         {
-            bitcodes.SetAll(false);
-            for (int i = 0; i < bitcodes.Length; i++)
-            {
-                if (bitcodes[i])
-                    return true;
-            }
-
             return false;
         }
 

@@ -14,9 +14,9 @@ using uint64 = System.UInt64;
 
 namespace DreamEngine.Net.Protocols.Common
 {
-	public partial class ReqConnect : Protocol<ReqConnect>
+	public partial class AckLogin : Protocol<AckLogin>
 	{
-		public delegate bool ReceivedHandle(ReqConnect protocol);
+		public delegate bool ReceivedHandle(AckLogin protocol);
 
 		struct ReceivedPkg
 		{
@@ -34,15 +34,30 @@ namespace DreamEngine.Net.Protocols.Common
         private byte[] placeholder = new uint8[1];
         private BitArray bitcodes = new BitArray(8, false);
 		
+		/// <summary>
+        /// 
+        /// </summary>
+		public UserInfo UserInfo
+		{
+			get
+			{
+				return m_UserInfo;
+			}
+			set
+			{
+				m_UserInfo = value;
+			}
+		}
+		private UserInfo m_UserInfo = new UserInfo();
 
-		private static uint16 s_ProtocolType = 0x0001;
+		private static uint16 s_ProtocolType = 0x0004;
 		
-		public ReqConnect()
+		public AckLogin()
 		{
 
 		}
 
-		public ReqConnect(AgentBase agent = null) : base(agent)
+		public AckLogin(AgentBase agent = null) : base(agent)
 		{
 			
 		}
@@ -54,25 +69,27 @@ namespace DreamEngine.Net.Protocols.Common
 
 		public override string GetProtocolName()
         {
-            return "ReqConnect";
+            return "AckLogin";
         }
 
-		private static ReqConnect s_ReqConnect;
-		public static ReqConnect Instance
+		private static AckLogin s_AckLogin;
+		public static AckLogin Instance
 		{
 			get
 			{
-				if (s_ReqConnect == null)
+				if (s_AckLogin == null)
 				{
-					s_ReqConnect = new ReqConnect();
+					s_AckLogin = new AckLogin();
 				}
-				return s_ReqConnect;
+				return s_AckLogin;
 			}
 		}
 
 		protected override byte[] EncodePlaceholder()
         {
 			bitcodes.SetAll(false);
+			if (UserInfo.IsVaild())
+				bitcodes[0] = true;
             this.ConvertPlaceholder(bitcodes, placeholder);
             return placeholder;
         }
@@ -90,43 +107,51 @@ namespace DreamEngine.Net.Protocols.Common
 
 		public override bool IsVaild()
         {
+			if (UserInfo.IsVaild())
+				return true;
             return false;
         }
 
 		public override void Reset()
 		{
+			m_UserInfo.Reset();
 		}
 
 		public override byte[] Encode(byte[] buffer, ref int index)
         {
             buffer = base.Encode(buffer, ref index);
+			if (UserInfo.IsVaild())
+				Encode(buffer, ref index, m_UserInfo);
 			return buffer;
         }
 
 		public override void Decode(MemoryStream ms)
         {
             base.Decode(ms);
+			if (bitcodes[0])
+				Decode(ms, ref m_UserInfo);
         }
 
-		public ReqConnect Clone()
+		public AckLogin Clone()
 		{
-			ReqConnect obj = new ReqConnect();
+			AckLogin obj = new AckLogin();
+			obj.UserInfo = this.UserInfo.Clone();
 			return obj;
 		}
 
-		public static ReqConnect operator +(ReqConnect s1, ReceivedHandle handle)
+		public static AckLogin operator +(AckLogin s1, ReceivedHandle handle)
         {
             s1.RegisterListener(handle);
             return s1;
         } 
 
-        public static ReqConnect operator -(ReqConnect s1, ReceivedHandle handle)
+        public static AckLogin operator -(AckLogin s1, ReceivedHandle handle)
         {
             s1.UnregisterListener(handle);
             return s1;
         }
 
-		public static ReqConnect operator -(ReqConnect s1, object target)
+		public static AckLogin operator -(AckLogin s1, object target)
         {
             s1.UnregisterListener(target);
             return s1;
@@ -211,7 +236,7 @@ namespace DreamEngine.Net.Protocols.Common
 			bool isContinue = true;
 			foreach (ReceivedPkg pkg in m_Receiveds)
 			{
-				isContinue = pkg.m_Handle.Invoke(t as ReqConnect);
+				isContinue = pkg.m_Handle.Invoke(t as AckLogin);
 				if (pkg.m_IsAutoRemove)
 				{
 					UnregisterListener(pkg.m_Handle);
@@ -263,7 +288,7 @@ namespace DreamEngine.Net.Protocols.Common
 
 		public override IProtocol Make()
 		{
-			return new ReqConnect(m_Agent);
+			return new AckLogin(m_Agent);
 		}
 
 		public override bool HasReceived()

@@ -16,6 +16,7 @@ public class UIPlayerOperatePanel : UIPanel
     }
     private BattlePlayerInfo currentPlayerInfo = null;
 
+    
     protected override void Awake()
     {
         base.Awake();
@@ -28,7 +29,7 @@ public class UIPlayerOperatePanel : UIPanel
         if (null == currentPlayerInfo)
             return;
 
-
+        this.SetupSkills();
     }
 
     // Update is called once per frame
@@ -54,7 +55,7 @@ public class UIPlayerOperatePanel : UIPanel
 
             GameObject go = null;
             UISkillButton skillButton = null;
-            
+
             for (int i = skillButtonGrid.transform.childCount; i < skillCount; i++)
             {
                 var skillInfo = currentPlayerInfo.Skills[i];
@@ -68,7 +69,6 @@ public class UIPlayerOperatePanel : UIPanel
                     {
                         this.OnPressSkill(skillButton);
                     });
-
                     repeatButton.onRelease.AddListener(delegate ()
                     {
                         this.OnClickSkill(skillButton);

@@ -12,11 +12,11 @@ using uint32 = System.UInt32;
 using int64 = System.Int64;
 using uint64 = System.UInt64;
 
-namespace DreamEngine.Net.Protocols.Common
+namespace DreamEngine.Net.Protocols.Server
 {
-	public partial class LoginRes : Protocol<LoginRes>
+	public partial class ReqJoinToCenterServer : Protocol<ReqJoinToCenterServer>
 	{
-		public delegate bool ReceivedHandle(LoginRes protocol);
+		public delegate bool ReceivedHandle(ReqJoinToCenterServer protocol);
 
 		struct ReceivedPkg
 		{
@@ -35,29 +35,29 @@ namespace DreamEngine.Net.Protocols.Common
         private BitArray bitcodes = new BitArray(8, false);
 		
 		/// <summary>
-        /// 
+        ///  此时服务器ID为0
         /// </summary>
-		public string Account
+		public ServerInfoReport Server
 		{
 			get
 			{
-				return m_Account;
+				return m_Server;
 			}
 			set
 			{
-				m_Account = value;
+				m_Server = value;
 			}
 		}
-		private string m_Account = "";
+		private ServerInfoReport m_Server = new ServerInfoReport();
 
-		private static uint16 s_ProtocolType = 0x0004;
+		private static uint16 s_ProtocolType = 0x0F03;
 		
-		public LoginRes()
+		public ReqJoinToCenterServer()
 		{
 
 		}
 
-		public LoginRes(AgentBase agent = null) : base(agent)
+		public ReqJoinToCenterServer(AgentBase agent = null) : base(agent)
 		{
 			
 		}
@@ -69,24 +69,27 @@ namespace DreamEngine.Net.Protocols.Common
 
 		public override string GetProtocolName()
         {
-            return "LoginRes";
+            return "ReqJoinToCenterServer";
         }
 
-		private static LoginRes s_LoginRes;
-		public static LoginRes Instance
+		private static ReqJoinToCenterServer s_ReqJoinToCenterServer;
+		public static ReqJoinToCenterServer Instance
 		{
 			get
 			{
-				if (s_LoginRes == null)
+				if (s_ReqJoinToCenterServer == null)
 				{
-					s_LoginRes = new LoginRes();
+					s_ReqJoinToCenterServer = new ReqJoinToCenterServer();
 				}
-				return s_LoginRes;
+				return s_ReqJoinToCenterServer;
 			}
 		}
 
 		protected override byte[] EncodePlaceholder()
         {
+			bitcodes.SetAll(false);
+			if (Server.IsVaild())
+				bitcodes[0] = true;
             this.ConvertPlaceholder(bitcodes, placeholder);
             return placeholder;
         }
@@ -104,28 +107,21 @@ namespace DreamEngine.Net.Protocols.Common
 
 		public override bool IsVaild()
         {
-            bitcodes.SetAll(false);
-			if (Account != "")
-				bitcodes[0] = true;
-            for (int i = 0; i < bitcodes.Length; i++)
-            {
-                if (bitcodes[i])
-                    return true;
-            }
-
+			if (Server.IsVaild())
+				return true;
             return false;
         }
 
 		public override void Reset()
 		{
-			m_Account = "";
+			m_Server.Reset();
 		}
 
 		public override byte[] Encode(byte[] buffer, ref int index)
         {
             buffer = base.Encode(buffer, ref index);
-			if (bitcodes[0])
-				Encode(buffer, ref index, m_Account);
+			if (Server.IsVaild())
+				Encode(buffer, ref index, m_Server);
 			return buffer;
         }
 
@@ -133,29 +129,29 @@ namespace DreamEngine.Net.Protocols.Common
         {
             base.Decode(ms);
 			if (bitcodes[0])
-				Decode(ms, ref m_Account);
+				Decode(ms, ref m_Server);
         }
 
-		public LoginRes Clone()
+		public ReqJoinToCenterServer Clone()
 		{
-			LoginRes obj = new LoginRes();
-			obj.Account = this.Account;
+			ReqJoinToCenterServer obj = new ReqJoinToCenterServer();
+			obj.Server = this.Server.Clone();
 			return obj;
 		}
 
-		public static LoginRes operator +(LoginRes s1, ReceivedHandle handle)
+		public static ReqJoinToCenterServer operator +(ReqJoinToCenterServer s1, ReceivedHandle handle)
         {
             s1.RegisterListener(handle);
             return s1;
         } 
 
-        public static LoginRes operator -(LoginRes s1, ReceivedHandle handle)
+        public static ReqJoinToCenterServer operator -(ReqJoinToCenterServer s1, ReceivedHandle handle)
         {
             s1.UnregisterListener(handle);
             return s1;
         }
 
-		public static LoginRes operator -(LoginRes s1, object target)
+		public static ReqJoinToCenterServer operator -(ReqJoinToCenterServer s1, object target)
         {
             s1.UnregisterListener(target);
             return s1;
@@ -240,7 +236,7 @@ namespace DreamEngine.Net.Protocols.Common
 			bool isContinue = true;
 			foreach (ReceivedPkg pkg in m_Receiveds)
 			{
-				isContinue = pkg.m_Handle.Invoke(t as LoginRes);
+				isContinue = pkg.m_Handle.Invoke(t as ReqJoinToCenterServer);
 				if (pkg.m_IsAutoRemove)
 				{
 					UnregisterListener(pkg.m_Handle);
@@ -292,7 +288,7 @@ namespace DreamEngine.Net.Protocols.Common
 
 		public override IProtocol Make()
 		{
-			return new LoginRes(m_Agent);
+			return new ReqJoinToCenterServer(m_Agent);
 		}
 
 		public override bool HasReceived()

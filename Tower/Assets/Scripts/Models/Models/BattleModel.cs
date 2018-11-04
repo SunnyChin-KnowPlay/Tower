@@ -58,6 +58,10 @@ public class BattleModel : BaseModel
         return list.ToArray();
     }
 
+    /// <summary>
+    /// 获取用户自己的角色信息
+    /// </summary>
+    /// <returns></returns>
     public BattlePlayerInfo GetSelfPlayer()
     {
         var list = this.GetUnits(BattleUnitRelationEnum.Self);

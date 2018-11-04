@@ -58,7 +58,10 @@ namespace DreamEngine.Net.Protocols.Common
 		protected override byte[] EncodePlaceholder()
         {
 			bitcodes.SetAll(false);
-
+			if (Uuid != Guid.Empty)
+				bitcodes[0] = true;
+			if (Name != "")
+				bitcodes[1] = true;
             this.ConvertPlaceholder(bitcodes, placeholder);
             return placeholder;
         }
@@ -77,9 +80,9 @@ namespace DreamEngine.Net.Protocols.Common
 		public override byte[] Encode(byte[] buffer, ref int index)
         {
             buffer = base.Encode(buffer, ref index);
-			if (bitcodes[0])
+			if (Uuid != Guid.Empty)
 				Encode(buffer, ref index, m_Uuid);
-			if (bitcodes[1])
+			if (Name != "")
 				Encode(buffer, ref index, m_Name);
 			return buffer;
         }
@@ -95,17 +98,10 @@ namespace DreamEngine.Net.Protocols.Common
 
 		public override bool IsVaild()
         {
-            bitcodes.SetAll(false);
 			if (Uuid != Guid.Empty)
-				bitcodes[0] = true;
+				return true;
 			if (Name != "")
-				bitcodes[1] = true;
-            for (int i = 0; i < bitcodes.Length; i++)
-            {
-                if (bitcodes[i])
-                    return true;
-            }
-
+				return true;
             return false;
         }
 

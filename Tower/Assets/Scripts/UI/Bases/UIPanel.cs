@@ -19,6 +19,11 @@ public class UIPanel : MonoBehaviour, IUIPanel
     /// </summary>
     public bool IsCommon { get; set; }
 
+    /// <summary>
+    /// 进场退场时是否需要拦截触摸事件
+    /// </summary>
+    protected bool isCoverTouchInIO = false;
+
     protected virtual void Awake()
     {
         animator = this.GetComponent<Animator>();
@@ -40,7 +45,7 @@ public class UIPanel : MonoBehaviour, IUIPanel
     /// <returns>true:是</returns>
     protected virtual bool IsCoverTouchInIO()
     {
-        return false;
+        return isCoverTouchInIO;
     }
 
     public IEnumerator OnHide()

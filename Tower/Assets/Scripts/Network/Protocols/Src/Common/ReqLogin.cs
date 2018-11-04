@@ -14,9 +14,9 @@ using uint64 = System.UInt64;
 
 namespace DreamEngine.Net.Protocols.Common
 {
-	public partial class LoginReq : Protocol<LoginReq>
+	public partial class ReqLogin : Protocol<ReqLogin>
 	{
-		public delegate bool ReceivedHandle(LoginReq protocol);
+		public delegate bool ReceivedHandle(ReqLogin protocol);
 
 		struct ReceivedPkg
 		{
@@ -31,8 +31,8 @@ namespace DreamEngine.Net.Protocols.Common
 		/// <summary>
         /// 占位符
         /// </summary>
-        private byte[] placeholder = new uint8[2];
-        private BitArray bitcodes = new BitArray(16, false);
+        private byte[] placeholder = new uint8[1];
+        private BitArray bitcodes = new BitArray(8, false);
 		
 		/// <summary>
         /// 
@@ -64,120 +64,15 @@ namespace DreamEngine.Net.Protocols.Common
 			}
 		}
 		private string m_Password = "";
-		/// <summary>
-        /// 
-        /// </summary>
-		public string C1
-		{
-			get
-			{
-				return m_C1;
-			}
-			set
-			{
-				m_C1 = value;
-			}
-		}
-		private string m_C1 = "";
-		/// <summary>
-        /// 
-        /// </summary>
-		public string C2
-		{
-			get
-			{
-				return m_C2;
-			}
-			set
-			{
-				m_C2 = value;
-			}
-		}
-		private string m_C2 = "";
-		/// <summary>
-        /// 
-        /// </summary>
-		public string C3
-		{
-			get
-			{
-				return m_C3;
-			}
-			set
-			{
-				m_C3 = value;
-			}
-		}
-		private string m_C3 = "";
-		/// <summary>
-        /// 
-        /// </summary>
-		public string C4
-		{
-			get
-			{
-				return m_C4;
-			}
-			set
-			{
-				m_C4 = value;
-			}
-		}
-		private string m_C4 = "";
-		/// <summary>
-        /// 
-        /// </summary>
-		public string C5
-		{
-			get
-			{
-				return m_C5;
-			}
-			set
-			{
-				m_C5 = value;
-			}
-		}
-		private string m_C5 = "";
-		/// <summary>
-        /// 
-        /// </summary>
-		public string C6
-		{
-			get
-			{
-				return m_C6;
-			}
-			set
-			{
-				m_C6 = value;
-			}
-		}
-		private string m_C6 = "";
-		/// <summary>
-        /// 
-        /// </summary>
-		public string C7
-		{
-			get
-			{
-				return m_C7;
-			}
-			set
-			{
-				m_C7 = value;
-			}
-		}
-		private string m_C7 = "";
 
 		private static uint16 s_ProtocolType = 0x0003;
 		
-		public LoginReq()
+		public ReqLogin()
 		{
 
 		}
 
-		public LoginReq(AgentBase agent = null) : base(agent)
+		public ReqLogin(AgentBase agent = null) : base(agent)
 		{
 			
 		}
@@ -189,66 +84,50 @@ namespace DreamEngine.Net.Protocols.Common
 
 		public override string GetProtocolName()
         {
-            return "LoginReq";
+            return "ReqLogin";
         }
 
-		private static LoginReq s_LoginReq;
-		public static LoginReq Instance
+		private static ReqLogin s_ReqLogin;
+		public static ReqLogin Instance
 		{
 			get
 			{
-				if (s_LoginReq == null)
+				if (s_ReqLogin == null)
 				{
-					s_LoginReq = new LoginReq();
+					s_ReqLogin = new ReqLogin();
 				}
-				return s_LoginReq;
+				return s_ReqLogin;
 			}
 		}
 
 		protected override byte[] EncodePlaceholder()
         {
+			bitcodes.SetAll(false);
+			if (Account != "")
+				bitcodes[0] = true;
+			if (Password != "")
+				bitcodes[1] = true;
             this.ConvertPlaceholder(bitcodes, placeholder);
             return placeholder;
         }
 
 		protected override void DecodePlaceholder(MemoryStream ms)
         {
-            if (!IsEnough(ms, 2))
+            if (!IsEnough(ms, 1))
             {
                 Debugger.Log("MemoryStream Error");
                 return;
             }
-            ms.Read(placeholder, 0, 2);
+            ms.Read(placeholder, 0, 1);
             ConvertToBitArray(bitcodes, placeholder);
         }
 
 		public override bool IsVaild()
         {
-            bitcodes.SetAll(false);
 			if (Account != "")
-				bitcodes[0] = true;
+				return true;
 			if (Password != "")
-				bitcodes[1] = true;
-			if (C1 != "")
-				bitcodes[2] = true;
-			if (C2 != "")
-				bitcodes[3] = true;
-			if (C3 != "")
-				bitcodes[4] = true;
-			if (C4 != "")
-				bitcodes[5] = true;
-			if (C5 != "")
-				bitcodes[6] = true;
-			if (C6 != "")
-				bitcodes[7] = true;
-			if (C7 != "")
-				bitcodes[8] = true;
-            for (int i = 0; i < bitcodes.Length; i++)
-            {
-                if (bitcodes[i])
-                    return true;
-            }
-
+				return true;
             return false;
         }
 
@@ -256,36 +135,15 @@ namespace DreamEngine.Net.Protocols.Common
 		{
 			m_Account = "";
 			m_Password = "";
-			m_C1 = "";
-			m_C2 = "";
-			m_C3 = "";
-			m_C4 = "";
-			m_C5 = "";
-			m_C6 = "";
-			m_C7 = "";
 		}
 
 		public override byte[] Encode(byte[] buffer, ref int index)
         {
             buffer = base.Encode(buffer, ref index);
-			if (bitcodes[0])
+			if (Account != "")
 				Encode(buffer, ref index, m_Account);
-			if (bitcodes[1])
+			if (Password != "")
 				Encode(buffer, ref index, m_Password);
-			if (bitcodes[2])
-				Encode(buffer, ref index, m_C1);
-			if (bitcodes[3])
-				Encode(buffer, ref index, m_C2);
-			if (bitcodes[4])
-				Encode(buffer, ref index, m_C3);
-			if (bitcodes[5])
-				Encode(buffer, ref index, m_C4);
-			if (bitcodes[6])
-				Encode(buffer, ref index, m_C5);
-			if (bitcodes[7])
-				Encode(buffer, ref index, m_C6);
-			if (bitcodes[8])
-				Encode(buffer, ref index, m_C7);
 			return buffer;
         }
 
@@ -296,50 +154,29 @@ namespace DreamEngine.Net.Protocols.Common
 				Decode(ms, ref m_Account);
 			if (bitcodes[1])
 				Decode(ms, ref m_Password);
-			if (bitcodes[2])
-				Decode(ms, ref m_C1);
-			if (bitcodes[3])
-				Decode(ms, ref m_C2);
-			if (bitcodes[4])
-				Decode(ms, ref m_C3);
-			if (bitcodes[5])
-				Decode(ms, ref m_C4);
-			if (bitcodes[6])
-				Decode(ms, ref m_C5);
-			if (bitcodes[7])
-				Decode(ms, ref m_C6);
-			if (bitcodes[8])
-				Decode(ms, ref m_C7);
         }
 
-		public LoginReq Clone()
+		public ReqLogin Clone()
 		{
-			LoginReq obj = new LoginReq();
+			ReqLogin obj = new ReqLogin();
 			obj.Account = this.Account;
 			obj.Password = this.Password;
-			obj.C1 = this.C1;
-			obj.C2 = this.C2;
-			obj.C3 = this.C3;
-			obj.C4 = this.C4;
-			obj.C5 = this.C5;
-			obj.C6 = this.C6;
-			obj.C7 = this.C7;
 			return obj;
 		}
 
-		public static LoginReq operator +(LoginReq s1, ReceivedHandle handle)
+		public static ReqLogin operator +(ReqLogin s1, ReceivedHandle handle)
         {
             s1.RegisterListener(handle);
             return s1;
         } 
 
-        public static LoginReq operator -(LoginReq s1, ReceivedHandle handle)
+        public static ReqLogin operator -(ReqLogin s1, ReceivedHandle handle)
         {
             s1.UnregisterListener(handle);
             return s1;
         }
 
-		public static LoginReq operator -(LoginReq s1, object target)
+		public static ReqLogin operator -(ReqLogin s1, object target)
         {
             s1.UnregisterListener(target);
             return s1;
@@ -424,7 +261,7 @@ namespace DreamEngine.Net.Protocols.Common
 			bool isContinue = true;
 			foreach (ReceivedPkg pkg in m_Receiveds)
 			{
-				isContinue = pkg.m_Handle.Invoke(t as LoginReq);
+				isContinue = pkg.m_Handle.Invoke(t as ReqLogin);
 				if (pkg.m_IsAutoRemove)
 				{
 					UnregisterListener(pkg.m_Handle);
@@ -476,7 +313,7 @@ namespace DreamEngine.Net.Protocols.Common
 
 		public override IProtocol Make()
 		{
-			return new LoginReq(m_Agent);
+			return new ReqLogin(m_Agent);
 		}
 
 		public override bool HasReceived()
