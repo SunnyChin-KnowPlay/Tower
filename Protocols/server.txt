@@ -1,0 +1,31 @@
+namespace Server
+{
+	Protocol ServerInfoReport: 0x0F01 --服务器之间报告服务器状态
+	{
+		uint64   target_id;	-- 服务器id
+		
+		uint64   server_id;
+		string  server_name ;
+		string  server_ip ;
+		int32   server_port ;
+		int32   server_max_online ;
+		int32   server_cur_count ;
+		ServerState   server_state ;
+		int32   server_type ;
+	}
+	
+	Protocol ReqJoinToCenterServer : 0x0F03	-- 请求加入中央服务器
+	{
+		ServerInfoReport server;		-- 此时服务器ID为0
+	}
+	
+	Protocol ReqQuitFromCenterServer : 0x0F04 -- 请求退出中央服务器
+	{
+		ServerInfoReport server;
+	}
+	
+	Protocol NtfServerInfoReportProxy: 0x0F05 -- 同步所有服务器本服务器的信息
+	{
+		ServerInfoReport server ;
+	}
+}

@@ -1,4 +1,4 @@
-namespace Common
+﻿namespace Common
 {
 	Info UserInfo
 	{
@@ -16,21 +16,14 @@ namespace Common
 
 	}
 
-	Protocol LoginReq : 0x0003
+	Protocol ReqLogin : 0x0003
 	{
 		string account;
 		string password;
-		string c1;
-		string c2;
-		string c3;
-		string c4;
-		string c5;
-		string c6;
-		string c7;
 	}
 
-	Protocol LoginRes : 0x0004
+	Protocol AckLogin : 0x0004
 	{
-		string account;
+		UserInfo userInfo;
 	}
 }
